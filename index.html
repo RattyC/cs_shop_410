@@ -2,61 +2,93 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSMJU Souvenir Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSMJU Souvenir Shop - ของที่ระลึกครบรอบ 30 ปี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <header>
-        <h1>CSMJU Souvenir Shop</h1>
-        <nav>
-            <a href="#products">สินค้า</a>
-            <a href="#order">สั่งซื้อ</a>
-            <a href="#contact">ติดต่อเรา</a>
-        </nav>
+        <div class="container nav-container">
+            <h1 class="logo">CSMJU Souvenir Shop</h1>
+            <nav>
+                <a href="#products">สินค้า</a>
+                <a href="order.html">สั่งซื้อ</a>
+                <a href="#contact">ติดต่อ</a>
+                <a href="admin.html" class="admin-link">Admin</a>
+            </nav>
+            <button class="nav-toggle" aria-label="เปิดเมนู">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
-    <div class="hero">
-        <h2>ที่ระลึก 30 ปี วิทยาการคอมพิวเตอร์</h2>
-    </div>
-
-    <div class="section" id="products">
-        <h2>สินค้าแนะนำ</h2>
-        <div class="products">
-            <div class="product">
-                <img src="https://cdn.pixabay.com/photo/2016/11/29/02/00/t-shirt-1867167_1280.png" alt="เสื้อที่ระลึก">
-                <h3>เสื้อครบรอบ 30 ปี</h3>
-                <p>ขนาด SS-2XL สีขาว เทา ดำ</p>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <h2>ของที่ระลึกฉลอง 30 ปี<br />สาขาวิชาวิทยาการคอมพิวเตอร์</h2>
+                <p>สินค้าคุณภาพพรีเมียม ออกแบบพิเศษเพื่อคุณ</p>
+                <a href="order.html" class="btn-primary">สั่งซื้อเลย</a>
             </div>
-            <div class="product">
-                <img src="https://cdn.pixabay.com/photo/2012/04/14/16/25/cup-34243_1280.png" alt="แก้ว">
-                <h3>แก้วน้ำพรีเมียม</h3>
-                <p>พิมพ์ลายพิเศษ 30 ปี</p>
-            </div>
-            <div class="product">
-                <img src="https://cdn.pixabay.com/photo/2016/03/31/20/37/hat-1292767_1280.png" alt="หมวก">
-                <h3>หมวกผ้า Cotton</h3>
-                <p>สีเทาเข้มปักลาย CSMJU</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="section" id="order">
-        <h2>สั่งซื้อสินค้า</h2>
-        <p>คลิกเพื่อกรอกแบบฟอร์ม <a href="order.html">[ สั่งซื้อ ]</a></p>
-    </div>
+        <section class="section" id="products">
+            <div class="container">
+                <h2>สินค้าแนะนำ</h2>
+                <div class="products-grid">
+                    <article class="product-card">
+                        <img src="pic/t-1.jpg" alt="เสื้อที่ระลึก" loading="lazy" />
+                        <h3>เสื้อครบรอบ 30 ปี</h3>
+                        <p>ขนาด SS-2XL สีขาว เทา ดำ</p>
+                        <p class="price">ราคาเริ่มต้น 250 บาท</p>
+                    </article>
+                    <article class="product-card">
+                        <img src="pic/yeti.png" alt="แก้วน้ำพรีเมียม" loading="lazy" />
+                        <h3>แก้วน้ำพรีเมียม</h3>
+                        <p>พิมพ์ลายพิเศษ 30 ปี</p>
+                        <p class="price">ราคา 120 บาท</p>
+                    </article>
+                    <article class="product-card">
+                        <img src="pic/cap.png" alt="หมวกผ้า Cotton" loading="lazy" />
+                        <h3>หมวกผ้า Cotton</h3>
+                        <p>สีเทาเข้ม ปักลาย CSMJU</p>
+                        <p class="price">ราคา 180 บาท</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <div class="section" id="contact">
-        <h2>ติดต่อสอบถาม</h2>
-        <p>Facebook: CSMJU | โทร: 053-123456 | Email: souvenir@csmju.ac.th</p>
-    </div>
+        <section class="section" id="contact">
+            <div class="container contact-section">
+                <h2>ติดต่อสอบถาม</h2>
+                <p>Facebook: <a href="https://facebook.com/CSMJU" target="_blank" rel="noopener noreferrer">CSMJU</a>
+                </p>
+                <p>โทร: 053-123456</p>
+                <p>Email: <a href="mailto:souvenir@csmju.ac.th">souvenir@csmju.ac.th</a></p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        &copy; 2025 สาขาวิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้
+        <div class="container footer-container">
+            &copy; 2025 สาขาวิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้
+        </div>
     </footer>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('nav');
+
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+            navToggle.classList.toggle('open');
+        });
+    </script>
 </body>
 
 </html>
