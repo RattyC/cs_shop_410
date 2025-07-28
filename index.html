@@ -4,350 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สั่งซื้อของที่ระลึก 30 ปี วิทยาการคอมพิวเตอร์</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-        <link href="style.css" rel="stylesheet" />
+    <title>CSMJU Souvenir Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-white text-gray-900 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-gray-900">30 ปี วิทยาการคอม</h1>
-            <nav class="space-x-4">
-                <a href="#" class="text-gray-600 hover:text-gray-900">หน้าแรก</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">ร้านค้า</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">เกี่ยวกับ</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">ติดต่อ</a>
-            </nav>
-        </div>
+<body>
+    <header>
+        <h1>CSMJU Souvenir Shop</h1>
+        <nav>
+            <a href="#products">สินค้า</a>
+            <a href="#order">สั่งซื้อ</a>
+            <a href="#contact">ติดต่อเรา</a>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <div class="hero-bg text-center py-20">
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900">คอลเลกชัน 30 ปี วิทยาการคอมพิวเตอร์</h1>
-        <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-            เฉลิมฉลองวาระครบรอบด้วยของที่ระลึกดีไซน์พิเศษที่ผสานความทันสมัยและความสง่างาม</p>
-        <a href="#order"
-            class="mt-8 inline-block btn-primary px-8 py-3 rounded-none font-medium uppercase tracking-wide">สั่งซื้อตอนนี้</a>
+    <div class="hero">
+        <h2>ที่ระลึก 30 ปี วิทยาการคอมพิวเตอร์</h2>
     </div>
 
-    <!-- Why Choose Us -->
-    <div class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl font-semibold text-gray-900 text-center mb-12">ทำไมต้องเลือกเรา</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <img src="https://via.placeholder.com/50" alt="icon" class="mx-auto mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">จัดส่งฟรีและรวดเร็ว</h3>
-                <p class="text-sm text-gray-600">เราจัดส่งสินค้าถึงมือคุณอย่างรวดเร็วและฟรี</p>
+    <div class="section" id="products">
+        <h2>สินค้าแนะนำ</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/02/00/t-shirt-1867167_1280.png" alt="เสื้อที่ระลึก">
+                <h3>เสื้อครบรอบ 30 ปี</h3>
+                <p>ขนาด SS-2XL สีขาว เทา ดำ</p>
             </div>
-            <div class="text-center">
-                <img src="https://via.placeholder.com/50" alt="icon" class="mx-auto mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">ช้อปง่าย</h3>
-                <p class="text-sm text-gray-600">เลือกสินค้าได้สะดวกผ่านระบบที่ใช้งานง่าย</p>
+            <div class="product">
+                <img src="https://cdn.pixabay.com/photo/2012/04/14/16/25/cup-34243_1280.png" alt="แก้ว">
+                <h3>แก้วน้ำพรีเมียม</h3>
+                <p>พิมพ์ลายพิเศษ 30 ปี</p>
             </div>
-            <div class="text-center">
-                <img src="https://via.placeholder.com/50" alt="icon" class="mx-auto mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">ดูแลตลอด 24/7</h3>
-                <p class="text-sm text-gray-600">ทีมงานพร้อมให้ความช่วยเหลือทุกเวลา</p>
-            </div>
-            <div class="text-center">
-                <img src="https://via.placeholder.com/50" alt="icon" class="mx-auto mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">คืนสินค้าง่าย</h3>
-                <p class="text-sm text-gray-600">นโยบายคืนสินค้าที่ไม่ยุ่งยาก</p>
+            <div class="product">
+                <img src="https://cdn.pixabay.com/photo/2016/03/31/20/37/hat-1292767_1280.png" alt="หมวก">
+                <h3>หมวกผ้า Cotton</h3>
+                <p>สีเทาเข้มปักลาย CSMJU</p>
             </div>
         </div>
     </div>
 
-    <!-- Product Showcase -->
-    <div class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl font-semibold text-gray-900 text-center mb-12">คอลเลกชันของเรา</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-none p-6 card-hover transition transform border border-gray-200">
-                <img src="https://via.placeholder.com/250" alt="เสื้อ" class="w-full h-56 object-cover mb-4">
-                <h3 class="text-xl font-semibold text-gray-900">เสื้อรุ่น 30 ปี</h3>
-                <p class="text-sm text-gray-500">วัสดุ: ผ้าฝ้าย 100%<br>สี: ดำ, ขาว, เทา<br>ขนาด: S, M, L, XL</p>
-                <p class="text-gray-900 font-semibold mt-2">250 บาท</p>
-            </div>
-            <div class="bg-white rounded-none p-6 card-hover transition transform border border-gray-200">
-                <img src="https://via.placeholder.com/250" alt="กระเป๋า" class="w-full h-56 object-cover mb-4">
-                <h3 class="text-xl font-semibold text-gray-900">กระเป๋าผ้า</h3>
-                <p class="text-sm text-gray-500">วัสดุ: ผ้าแคนวาส<br>สี: เบจ, ดำ<br>ขนาด: 40x35 ซม.</p>
-                <p class="text-gray-900 font-semibold mt-2">150 บาท</p>
-            </div>
-            <div class="bg-white rounded-none p-6 card-hover transition transform border border-gray-200">
-                <img src="https://via.placeholder.com/250" alt="แก้ว" class="w-full h-56 object-cover mb-4">
-                <h3 class="text-xl font-semibold text-gray-900">แก้วที่ระลึก</h3>
-                <p class="text-sm text-gray-500">วัสดุ: เซรามิก<br>สี: ขาว, ดำ<br>ความจุ: 350 มล.</p>
-                <p class="text-gray-900 font-semibold mt-2">200 บาท</p>
-            </div>
-        </div>
+    <div class="section" id="order">
+        <h2>สั่งซื้อสินค้า</h2>
+        <p>คลิกเพื่อกรอกแบบฟอร์ม <a href="order.html">[ สั่งซื้อ ]</a></p>
     </div>
 
-    <!-- Order Form -->
-    <div id="order" class="container mx-auto px-4 py-16 bg-white">
-        <h2 class="text-3xl font-semibold text-gray-900 text-center mb-12">สั่งซื้อคอลเลกชัน</h2>
-        <div class="max-w-3xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">ชื่อ-นามสกุล</label>
-                    <input type="text" id="customerName"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500"
-                        placeholder="ชื่อ นามสกุล">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">เบอร์โทร</label>
-                    <input type="tel" id="phone"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500"
-                        placeholder="เช่น 081-234-5678">
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700">ที่อยู่</label>
-                    <textarea id="address"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500"
-                        placeholder="ที่อยู่สำหรับจัดส่ง "></textarea>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">วันที่ซื้อ</label>
-                    <input type="date" id="purchaseDate"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">ช่องทางชำระเงิน</label>
-                    <select id="paymentMethod"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500">
-                        <option value="bank">โอนเงินผ่านธนาคาร</option>
-                        <option value="cod">ชำระเงินปลายทาง</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">รูปสลิปการชำระเงิน</label>
-                    <input type="file" id="slip" accept="image/*"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">วิธีการรับสินค้า</label>
-                    <select id="deliveryMethod"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500">
-                        <option value="delivery">จัดส่ง</option>
-                        <option value="pickup">รับเอง</option>
-                    </select>
-                </div>
-            </div>
-
-            <h3 class="text-xl font-semibold mt-10 mb-4 text-gray-900">เลือกคอลเลกชัน</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">ประเภทสินค้า</label>
-                    <select id="productType"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500">
-                        <option value="shirt">เสื้อ</option>
-                        <option value="bag">กระเป๋า</option>
-                        <option value="mug">แก้ว</option>
-                        <option value="hat">หมวก</option>
-                        <option value="umbrella">ร่ม</option>
-                        <option value="pin">เข็มกลัด</option>
-                        <option value="notebook">สมุด</option>
-                        <option value="pen">ปากกา</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">รายละเอียด (เช่น สี, ขนาด)</label>
-                    <input type="text" id="productDetails"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500"
-                        placeholder="เช่น เสื้อสีดำ ขนาด M">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">จำนวน</label>
-                    <input type="number" id="quantity" min="1"
-                        class="mt-1 block w-full p-3 form-border rounded-none bg-transparent focus:ring-2 focus:ring-yellow-500"
-                        placeholder="เช่น 2">
-                </div>
-            </div>
-            <button onclick="addToCart()"
-                class="mt-6 btn-primary px-6 py-3 rounded-none font-medium uppercase tracking-wide">เพิ่มในตะกร้า</button>
-
-            <h3 class="text-xl font-semibold mt-10 mb-4 text-gray-900">ตะกร้าสินค้า</h3>
-            <table class="w-full border-collapse">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="p-3 text-left text-sm font-medium text-gray-700">สินค้า</th>
-                        <th class="p-3 text-left text-sm font-medium text-gray-700">รายละเอียด</th>
-                        <th class="p-3 text-left text-sm font-medium text-gray-700">จำนวน</th>
-                        <th class="p-3 text-left text-sm font-medium text-gray-700">ราคา</th>
-                        <th class="p-3 text-left text-sm font-medium text-gray-700">การจัดการ</th>
-                    </tr>
-                </thead>
-                <tbody id="cartTable">
-                    <!-- Cart items will be added here -->
-                </tbody>
-            </table>
-            <div class="flex justify-between items-center mt-6">
-                <p class="text-lg font-semibold">รวม: <span id="totalPrice">0</span> บาท</p>
-                <button onclick="confirmOrder()"
-                    class="btn-primary px-8 py-3 rounded-none font-medium uppercase tracking-wide">ยืนยันการสั่งซื้อ</button>
-            </div>
-        </div>
+    <div class="section" id="contact">
+        <h2>ติดต่อสอบถาม</h2>
+        <p>Facebook: CSMJU | โทร: 053-123456 | Email: souvenir@csmju.ac.th</p>
     </div>
 
-    <!-- Testimonials -->
-    <div class="container mx-auto px-4 py-16 bg-gray-50">
-        <h2 class="text-3xl font-semibold text-gray-900 text-center mb-12">คำรับรองจากลูกค้า</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 border border-gray-200">
-                <p class="text-sm text-gray-600 italic">“ของที่ระลึกดีไซน์สวย คุณภาพดีเกินราคา ซื้อไปฝากเพื่อนทุกคนชอบ!”
-                </p>
-                <p class="mt-4 text-gray-900 font-semibold">นฤมล ส.</p>
-                <p class="text-sm text-gray-500">ศิษย์เก่า วิทยาการคอมพิวเตอร์</p>
-            </div>
-            <div class="bg-white p-6 border border-gray-200">
-                <p class="text-sm text-gray-600 italic">“การสั่งซื้อสะดวกมาก ส่งของไว ทีมงานตอบคำถามรวดเร็ว”</p>
-                <p class="mt-4 text-gray-900 font-semibold">สมชาย ก.</p>
-                <p class="text-sm text-gray-500">ลูกค้า</p>
-            </div>
-            <div class="bg-white p-6 border border-gray-200">
-                <p class="text-sm text-gray-600 italic">“แก้วที่ระลึกสวยมาก ใช้ทุกวันเลย แนะนำให้ซื้อ!”</p>
-                <p class="mt-4 text-gray-900 font-semibold">วิภา ร.</p>
-                <p class="text-sm text-gray-500">ลูกค้า</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-100 text-gray-600 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">30 ปี วิทยาการคอม</h3>
-                    <p class="text-sm text-gray-600 mt-4">เฉลิมฉลองวาระครบรอบ 30 ปี ด้วยคอลเลกชันที่ระลึกสุดพิเศษ</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">ลิงก์</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">เกี่ยวกับ</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">บริการ</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">ติดต่อ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">สนับสนุน</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">ศูนย์ช่วยเหลือ</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">แชทสด</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900">คอลเลกชัน</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">เสื้อรุ่น 30 ปี</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">กระเป๋าผ้า</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-gray-900">แก้วที่ระลึก</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-center">
-                <p class="text-sm">© 2025 สาขาวิชาวิทยาการคอมพิวเตอร์. สงวนลิขสิทธิ์.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-sm text-gray-600 hover:text-gray-900 mr-4">เงื่อนไขการใช้งาน</a>
-                    <a href="#" class="text-sm text-gray-600 hover:text-gray-900">นโยบายความเป็นส่วนตัว</a>
-                </div>
-            </div>
-        </div>
+    <footer>
+        &copy; 2025 สาขาวิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้
     </footer>
-
-    <script>
-        const products = {
-            shirt: { name: "เสื้อ", price: 250 },
-            bag: { name: "กระเป๋า", price: 150 },
-            mug: { name: "แก้ว", price: 200 },
-            hat: { name: "หมวก", price: 180 },
-            umbrella: { name: "ร่ม", price: 300 },
-            pin: { name: "เข็มกลัด", price: 50 },
-            notebook: { name: "สมุด", price: 100 },
-            pen: { name: "ปากกา", price: 80 }
-        };
-
-        let cart = [];
-
-        function addToCart() {
-            const productType = document.getElementById('productType').value;
-            const details = document.getElementById('productDetails').value;
-            const quantity = parseInt(document.getElementById('quantity').value) || 1;
-
-            if (!details) {
-                alert('กรุณาระบุรายละเอียดสินค้า');
-                return;
-            }
-
-            const product = products[productType];
-            const total = product.price * quantity;
-
-            cart.push({ product: product.name, details, quantity, total });
-
-            updateCartTable();
-            document.getElementById('productType').value = 'shirt';
-            document.getElementById('productDetails').value = '';
-            document.getElementById('quantity').value = '';
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartTable();
-        }
-
-        function updateCartTable() {
-            const cartTable = document.getElementById('cartTable');
-            cartTable.innerHTML = '';
-
-            let totalPrice = 0;
-            cart.forEach((item, index) => {
-                totalPrice += item.total;
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="p-3 border-b border-gray-200">${item.product}</td>
-                    <td class="p-3 border-b border-gray-200">${item.details}</td>
-                    <td class="p-3 border-b border-gray-200">${item.quantity}</td>
-                    <td class="p-3 border-b border-gray-200">${item.total}</td>
-                    <td class="p-3 border-b border-gray-200">
-                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:underline text-sm">ลบ</button>
-                    </td>
-                `;
-                cartTable.appendChild(row);
-            });
-
-            document.getElementById('totalPrice').textContent = totalPrice;
-        }
-
-        function confirmOrder() {
-            if (cart.length === 0) {
-                alert('ตะกร้าสินค้าว่าง กรุณาเพิ่มสินค้าก่อนยืนยัน');
-                return;
-            }
-
-            const customerName = document.getElementById('customerName').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const purchaseDate = document.getElementById('purchaseDate').value;
-            const paymentMethod = document.getElementById('paymentMethod').value;
-            const deliveryMethod = document.getElementById('deliveryMethod').value;
-
-            if (!customerName || !phone || !address || !purchaseDate) {
-                alert('กรุณากรอกข้อมูลลูกค้าให้ครบถ้วน');
-                return;
-            }
-
-            alert('คำสั่งซื้อถูกยืนยันเรียบร้อยแล้ว!\n\nข้อมูลการสั่งซื้อ:\n' +
-                `ชื่อ: ${customerName}\nเบอร์โทร: ${phone}\nที่อยู่: ${address}\nวันที่ซื้อ: ${purchaseDate}\nช่องทางชำระเงิน: ${paymentMethod}\nวิธีการรับสินค้า: ${deliveryMethod}\n\nสินค้า:\n${cart.map(item => `${item.product} (${item.details}) x${item.quantity} = ${item.total} บาท`).join('\n')}\n\nรวม: ${document.getElementById('totalPrice').textContent} บาท`);
-
-            cart = [];
-            updateCartTable();
-            document.getElementById('customerName').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('address').value = '';
-            document.getElementById('purchaseDate').value = '';
-            document.getElementById('slip').value = '';
-        }
-    </script>
 </body>
 
 </html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สั่งซื้อสินค้า | CSMJU 30 ปี</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background: #f3f4f6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2f3542, #57606f);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #1e272e;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 0.75rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #57606f;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #dcdde1;
+            padding-bottom: 0.5rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        input[type="file"] {
+            background: #f1f2f6;
+        }
+
+        button {
+            padding: 0.8rem;
+            font-size: 1rem;
+            background: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #3742fa;
+        }
+
+        .summary {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #dcdde1;
+        }
+
+        .summary h3 {
+            margin-top: 0;
+        }
+
+        .summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ฟอร์มสั่งซื้อของที่ระลึก 30 ปี วิทยาการคอมพิวเตอร์</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">หน้าแรก</a>
+        <a href="order.html">สั่งซื้อสินค้า</a>
+        <a href="admin.html">จัดการสินค้า</a>
+        <a href="report.html">รายงานยอดขาย</a>
+    </nav>
+
+    <div class="container">
+        <h2>กรอกข้อมูลการสั่งซื้อ</h2>
+        <form onsubmit="return showSummary(event)">
+            <label>ชื่อ-นามสกุลผู้สั่งซื้อ:</label>
+            <input type="text" id="name" placeholder="เช่น นายสมชาย ใจดี" required>
+
+            <label>ที่อยู่สำหรับจัดส่ง:</label>
+            <textarea id="address" rows="3" placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+                required></textarea>
+
+            <label>เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" placeholder="เช่น 0891234567" required>
+
+            <label>เลือกสินค้า:</label>
+            <select id="product">
+                <option value="เสื้อ - ขาว - M">เสื้อ - ขาว - M</option>
+                <option value="เสื้อ - ดำ - L">เสื้อ - ดำ - L</option>
+                <option value="แก้ว">แก้ว</option>
+                <option value="หมวก">หมวก</option>
+                <option value="ปากกา">ปากกา</option>
+            </select>
+
+            <label>จำนวน:</label>
+            <input type="number" id="quantity" placeholder="เช่น 1" min="1" required>
+
+            <label>แนบสลิปการโอนเงิน:</label>
+            <input type="file" accept="image/*">
+
+            <label>ช่องทางการชำระเงิน:</label>
+            <select id="payment">
+                <option>โอนผ่านบัญชีธนาคาร</option>
+                <option>PromptPay</option>
+                <option>อื่น ๆ</option>
+            </select>
+
+            <button type="submit">ยืนยันการสั่งซื้อ</button>
+        </form>
+
+        <div class="summary" id="summary" style="display:none;">
+            <h3>สรุปรายการสั่งซื้อ</h3>
+            <ul id="summary-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        function showSummary(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const payment = document.getElementById('payment').value;
+
+            const summaryList = document.getElementById('summary-list');
+            summaryList.innerHTML = `
+        <li><strong>ชื่อผู้สั่ง:</strong> ${name}</li>
+        <li><strong>ที่อยู่:</strong> ${address}</li>
+        <li><strong>เบอร์โทร:</strong> ${phone}</li>
+        <li><strong>สินค้า:</strong> ${product}</li>
+        <li><strong>จำนวน:</strong> ${quantity}</li>
+        <li><strong>ช่องทางชำระเงิน:</strong> ${payment}</li>`;
+
+            document.getElementById('summary').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
