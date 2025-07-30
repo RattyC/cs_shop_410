@@ -2,15 +2,18 @@
 <html lang="th">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSMJU Souvenir Shop — 30 ปี วิทยาการคอมพิวเตอร์</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt&family=Playfair+Display:wght@600;700&display=swap"
+    <title>CSMJU Souvenir — ของที่ระลึกครบรอบ 30 ปี</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="pic/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --bermuda: #6B7B8C;
             --nile: #253746;
+            --bermuda: #6B7B8C;
             --chateau: #A3A9B3;
             --cloudy: #BEC5C7;
             --dawn: #F6F8F9;
@@ -20,6 +23,7 @@
             box-sizing: border-box
         }
 
+        html,
         body {
             margin: 0;
             font-family: 'Prompt', sans-serif;
@@ -32,747 +36,387 @@
             color: inherit
         }
 
-        /* NAV */
+        /* Navbar */
         .navbar {
             position: sticky;
             top: 0;
-            z-index: 50;
-            background: var(--nile);
-            color: #fff;
-            border-bottom: 1px solid #1a2933
+            z-index: 100;
+            background: #1f1f1f;
+            color: #fff
         }
 
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
+        .nav-container {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 12px 16px
+            align-items: center;
+            max-width: 1280px;
+            margin: auto;
+            padding: 10px 20px
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: .5px
+            height: 40px;
         }
 
-        .links {
+        .nav-links {
             display: flex;
             gap: 20px
         }
 
-        .links a {
-            opacity: .9
+        .nav-links a {
+            color: #ccc;
+            font-weight: 600
         }
 
-        .links a:hover {
-            opacity: 1
-        }
-
-        /* HERO */
-        .hero {
-            position: relative;
-            height: 76vh;
-            overflow: hidden
-        }
-
-        .hero iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, .45)
-        }
-
-        .hero-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            z-index: 2;
-            padding: 0 16px
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            margin: 0 0 10px
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700
-        }
-
-        .btn-primary {
-            background: var(--bermuda);
+        .nav-links a:hover {
             color: #fff
         }
 
-        .btn-primary:hover {
-            background: var(--chateau)
-        }
-
-        /* SECTION */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 32px 16px
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            text-align: center;
-            margin: 0 0 8px
-        }
-
-        .muted {
-            text-align: center;
-            color: #3c5567;
-            opacity: .75;
-            margin: 0 0 20px
-        }
-
-        /* FILTER */
-        .filters {
+        .nav-icons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 14px
+            gap: 14px
         }
 
-        .filters select {
-            padding: 10px;
-            border: 1px solid var(--cloudy);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--nile)
-        }
-
-        /* GRID */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid var(--cloudy);
-            border-radius: 12px;
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 85vh;
             overflow: hidden;
-            display: flex;
-            flex-direction: column
+            text-align: center;
+            color: #fff
         }
 
-        .card-img {
+        .hero video {
+            position: absolute;
             width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(65%)
         }
 
-        .card-body {
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px
+        .hero-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%)
         }
 
-        .price {
-            color: #20455e;
-            font-weight: 700
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem
         }
 
-        .card-actions {
-            margin-top: auto;
-            display: flex;
-            gap: 8px
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 10px
         }
 
-        .btn-outline {
-            background: #fff;
-            border: 1px solid var(--bermuda);
-            color: var(--nile);
-            border-radius: 8px;
-            padding: 8px 12px;
-            cursor: pointer
+        .hero {
+            position: relative;
+            height: 85vh;
+            overflow: hidden;
         }
 
-        .btn-outline:hover {
-            background: var(--dawn)
+        .video-bg iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
         }
 
-        /* CART FLYOUT */
-        .cart-btn {
-            position: fixed;
-            right: 16px;
-            bottom: 16px;
-            z-index: 60;
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-overlay h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .hero-overlay p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-overlay .btn {
             background: var(--bermuda);
             color: #fff;
             border: none;
-            border-radius: 999px;
-            padding: 12px 16px;
-            font-weight: 700;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, .15);
-            cursor: pointer
-        }
-
-        .flyout {
-            position: fixed;
-            top: 0;
-            right: -380px;
-            width: 360px;
-            max-width: 100%;
-            height: 100%;
-            background: #fff;
-            border-left: 1px solid var(--cloudy);
-            box-shadow: -8px 0 24px rgba(0, 0, 0, .12);
-            transition: right .28s ease;
-            z-index: 80;
-            display: flex;
-            flex-direction: column
-        }
-
-        .flyout.open {
-            right: 0
-        }
-
-        .flyout-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--cloudy);
-            background: var(--dawn)
-        }
-
-        .flyout-body {
-            padding: 12px 16px;
-            overflow: auto;
-            flex: 1
-        }
-
-        .flyout-item {
-            display: flex;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid #eff3f5
-        }
-
-        .thumb {
-            width: 64px;
-            height: 64px;
-            object-fit: cover;
             border-radius: 8px;
-            border: 1px solid var(--cloudy)
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
-        .meta {
-            flex: 1
+        .hero-overlay .btn:hover {
+            background: var(--chateau);
         }
 
-        .meta h5 {
-            margin: 0;
-            font-size: .98rem
-        }
 
-        .meta .sub {
-            color: #5c7180;
-            font-size: .86rem
-        }
-
-        .qty {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 6px
-        }
-
-        .qty button {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            border: 1px solid var(--cloudy);
-            background: #fff;
-            cursor: pointer
-        }
-
-        .flyout-foot {
-            border-top: 1px solid var(--cloudy);
-            padding: 14px 16px
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 800
-        }
-
-        .checkout {
-            margin-top: 10px;
-            width: 100%
-        }
-
-        /* MODAL (PRODUCT DETAIL) */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 70;
-            padding: 16px
-        }
-
-        .modal.open {
-            display: flex
-        }
-
-        .modal-card {
-            background: #fff;
-            border-radius: 16px;
-            max-width: 900px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            padding: 16px;
-            border: 1px solid var(--cloudy)
-        }
-
-        .modal-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--cloudy)
-        }
-
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            margin: 0 0 8px
-        }
-
-        .opt {
-            margin: 10px 0
-        }
-
-        .opt label {
-            display: block;
-            margin-bottom: 6px;
-            color: #4a5e6d
-        }
-
-        .opt select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--cloudy);
-            border-radius: 8px
-        }
-
-        .close-x {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: #fff;
-            border: 1px solid var(--cloudy);
-            border-radius: 8px;
-            padding: 6px 10px;
-            cursor: pointer
-        }
-
-        @media (max-width:820px) {
-            .modal-card {
-                grid-template-columns: 1fr
-            }
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--nile);
+        .btn {
+            background: var(--bermuda);
             color: #fff;
-            padding: 24px;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .btn:hover {
+            background: var(--chateau)
+        }
+
+        /* Intro Section */
+        .intro {
+            max-width: 1000px;
+            margin: auto;
             text-align: center;
+            padding: 50px 20px
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem
+        }
+
+        .intro p {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.7
+        }
+
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1280px;
+            margin: auto;
+            padding: 30px 20px
+        }
+
+        .cat-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: .3s
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.05)
+        }
+
+        .cat-card span {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: 600
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             margin-top: 40px
         }
 
-        /* UTIL */
-        .sr {
-            position: absolute;
-            left: -9999px
+        .products-grid {
+            max-width: 1280px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 20px
+        }
+
+        .prod {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center
+        }
+
+        .prod img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover
+        }
+
+        .prod h4 {
+            margin: 10px 0
+        }
+
+        .prod .price {
+            font-weight: 700
+        }
+
+        .prod button {
+            margin: 10px;
+            background: var(--bermuda);
+            border: none;
+            padding: 8px 12px;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .prod button:hover {
+            background: var(--chateau)
+        }
+        
+        .story {
+            background: #fff;
+            padding: 50px 20px;
+            margin-top: 30px
+        }
+
+        .story-inner {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center
+        }
+
+        .story img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+        }
+
+        .story-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px
+        }
+
+        .story-text p {
+            color: #444;
+            line-height: 1.7
+        }
+
+        footer {
+            background: var(--nile);
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 30px
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAV -->
-    <header class="navbar" role="banner">
-        <div class="nav-inner">
-            <div class="logo">CSMJU 30 ปี</div>
-            <nav class="links" aria-label="primary">
-                <a href="#products">สินค้า</a>
-                <a href="#about">เกี่ยวกับ</a>
+    <header class="navbar">
+        <div class="nav-container">
+            <div>
+                <img src="pic/logo.png" alt="Logo" class="logo"  >
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+                <a href="admin.html" style="color:#ffbb33">Admin</a>
             </nav>
+            <div class="nav-icons">
+                <i class="fa fa-search"></i>
+                <i class="fa fa-user"></i>
+                <i class="fa fa-shopping-cart"></i>
+            </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero">
-        <iframe
-            src="https://www.youtube.com/embed/mCNn75kSjmc?autoplay=1&mute=1&loop=1&playlist=mCNn75kSjmc&controls=0&modestbranding=1"
-            title="CSMJU 30th Video" frameborder="0" allow="autoplay; fullscreen" aria-hidden="true"></iframe>
-        <div class="hero-content">
-            <h1>ของที่ระลึกครบรอบ 30 ปี<br>สาขาวิชาวิทยาการคอมพิวเตอร์</h1>
-            <button class="btn btn-primary"
-                onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">เลือกซื้อเลย</button>
+    <section class="hero">
+        <div class="video-bg">
+            <iframe src="https://www.youtube.com/embed/mCNn75kSjmc?autoplay=1&mute=1&loop=1&playlist=mCNn75kSjmc"
+                frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
+        <div class="hero-overlay">
+            <h1>CSMJU Souvenir Shop</h1>
+            <p>ของที่ระลึกครบรอบ 30 ปี วิทยาการคอมพิวเตอร์</p>
+            <button class="btn"
+                onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">เลือกชมสินค้า</button>
         </div>
     </section>
 
-    <!-- PRODUCTS -->
-    <section id="products" class="container" aria-label="สินค้า">
-        <h2 class="section-title">สินค้าแนะนำ</h2>
-        <p class="muted">เลือกสีและขนาดได้จากหน้ารายละเอียดสินค้า</p>
-
-        <!-- Filters -->
-        <div class="filters">
-            <select id="filterCategory" aria-label="กรองตามหมวดหมู่">
-                <option value="">หมวดหมู่ทั้งหมด</option>
-            </select>
-            <select id="filterColor" aria-label="กรองตามสี">
-                <option value="">ทุกสี</option>
-                <option value="ดำ">ดำ</option>
-                <option value="ขาว">ขาว</option>
-                <option value="เทา">เทา</option>
-                <option value="Nile">Nile Blue</option>
-                <option value="Bermuda">Bermuda Gray</option>
-                <option value="Cloudy">Cloudy</option>
-                <option value="Chateau">Gray Chateau</option>
-            </select>
-            <select id="filterSize" aria-label="กรองตามไซส์">
-                <option value="">ทุกไซส์</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-                <option>2XL</option>
-            </select>
-        </div>
-
-        <!-- Grid -->
-        <div id="grid" class="grid" role="list"></div>
+    <section class="intro">
+        <h2>CSMJU Souvenir Shop</h2>
+        <p>เราสร้างสรรค์สินค้าที่ระลึกครบรอบ 30 ปี ด้วยดีไซน์และคุณภาพระดับพรีเมียม
+            สำหรับทุกคนที่เป็นส่วนหนึ่งของครอบครัววิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้</p>
     </section>
 
-    <!-- CART FLYOUT -->
-    <button class="cart-btn" onclick="toggleCart()" aria-haspopup="dialog" aria-controls="cartFlyout">ตะกร้า (<span
-            id="cartCount">0</span>)</button>
-    <aside id="cartFlyout" class="flyout" role="dialog" aria-label="ตะกร้าสินค้า">
-        <div class="flyout-head">
-            <strong>ตะกร้าสินค้า</strong>
-            <button class="btn-outline" onclick="toggleCart()">ปิด</button>
+    <section id="categories" class="categories">
+        <div class="cat-card"><img src="pic/t-1.jpg"><span>เสื้อผ้า</span></div>
+        <div class="cat-card"><img src="pic/bottle.jpg"><span>แก้วน้ำ</span></div>
+        <div class="cat-card"><img src="pic/cap1.jpg"><span>หมวก</span></div>
+        <div class="cat-card"><img src="pic/bag.jpg"><span>กระเป๋า</span></div>
+        <div class="cat-card"><img src="pic/brooch.jpg"><span>เข็มกลัด</span></div>
+    </section>
+
+    <h2 class="section-title">สินค้าแนะนำ</h2>
+    <div class="products-grid">
+        <div class="prod"><img src="pic/t-1.jpg">
+            <h4>เสื้อยืดครบรอบ 30 ปี</h4>
+            <div class="price">250 บาท</div><button onclick="window.location='products.html'">ดูรายละเอียด</button>
         </div>
-        <div id="cartItems" class="flyout-body"></div>
-        <div class="flyout-foot">
-            <div class="total">รวมทั้งหมด <span id="cartTotal">0</span> บาท</div>
-            <button class="btn btn-primary checkout" onclick="goCheckout()">ไปชำระเงิน</button>
+        <div class="prod"><img src="pic/bottle.jpg">
+            <h4>แก้วน้ำ CSMJU</h4>
+            <div class="price">150 บาท</div><button onclick="window.location='products.html'">ดูรายละเอียด</button>
         </div>
-    </aside>
-
-    <!-- PRODUCT DETAIL MODAL -->
-    <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-card">
-            <button class="close-x" onclick="closeModal()" aria-label="ปิดรายละเอียด">ปิด ✕</button>
-            <img id="modalImg" class="modal-img" alt="">
-            <div>
-                <h3 id="modalTitle" class="modal-title"></h3>
-                <div class="price" id="modalPrice"></div>
-
-                <div class="opt">
-                    <label for="modalColor">สี</label>
-                    <select id="modalColor"></select>
-                </div>
-                <div class="opt">
-                    <label for="modalSize">ขนาด</label>
-                    <select id="modalSize">
-                        <option value="">—</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                        <option>2XL</option>
-                    </select>
-                </div>
-                <div class="opt">
-                    <label for="modalQty">จำนวน</label>
-                    <select id="modalQty">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="addFromModal()">เพิ่มลงตะกร้า</button>
-                    <button class="btn-outline" onclick="closeModal()">ยกเลิก</button>
-                </div>
-            </div>
+        <div class="prod"><img src="pic/cap1.jpg">
+            <h4>หมวก 30 ปี</h4>
+            <div class="price">180 บาท</div><button onclick="window.location='products.html'">ดูรายละเอียด</button>
+        </div>
+        <div class="prod"><img src="pic/bag.jpg">
+            <h4>กระเป๋า CSMJU</h4>
+            <div class="price">350 บาท</div><button onclick="window.location='products.html'">ดูรายละเอียด</button>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="about">
-        © 2025 CSMJU Souvenir Shop — ภาควิชาวิทยาการคอมพิวเตอร์
+    <section class="story">
+        <div class="story-inner">
+            <img src="pic/t-2.jpg" alt="CSMJU">
+            <div class="story-text">
+                <h2>สร้างสรรค์เพื่อความทรงจำ</h2>
+                <p>สินค้าทุกชิ้นถูกออกแบบด้วยความตั้งใจ
+                    เพื่อให้ผู้ที่ได้รับรู้สึกถึงความผูกพันและความภาคภูมิใจในรากฐานของตนเองกับมหาวิทยาลัยแม่โจ้
+                    เราเลือกใช้วัสดุคุณภาพ และดีไซน์ที่สะท้อนความเรียบหรูร่วมสมัย</p>
+                <button class="btn" onclick="window.location='products.html'">ดูสินค้าทั้งหมด</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 CSMJU Souvenir Shop | วิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้</p>
     </footer>
 
-    <script>
-        /* ========= Product Data (พร้อมสี/ภาพ/ไซส์) ========= */
-        const PRODUCTS = [
-            {
-                id: 1, name: "เสื้อยืด", category: "เสื้อ", price: 250,
-                images: {
-                    "ดำ": "https://picsum.photos/seed/shirt-black/600/450",
-                    "ขาว": "https://picsum.photos/seed/shirt-white/600/450",
-                    "เทา": "https://picsum.photos/seed/shirt-gray/600/450"
-                },
-                colors: ["ดำ", "ขาว", "เทา"], sizes: ["S", "M", "L", "XL", "2XL"]
-            },
-            {
-                id: 2, name: "กระเป๋า", category: "กระเป๋า", price: 350,
-                images: {
-                    "Bermuda": "https://picsum.photos/seed/bag-bermuda/600/450",
-                    "Cloudy": "https://picsum.photos/seed/bag-cloudy/600/450"
-                },
-                colors: ["Bermuda", "Cloudy"], sizes: []
-            },
-            {
-                id: 3, name: "แก้ว", category: "แก้ว", price: 150,
-                images: {
-                    "Chateau": "https://picsum.photos/seed/mug-chateau/600/450",
-                    "Nile": "https://picsum.photos/seed/mug-nile/600/450"
-                },
-                colors: ["Chateau", "Nile"], sizes: []
-            },
-            {
-                id: 4, name: "หมวก", category: "หมวก", price: 180,
-                images: {
-                    "ดำ": "https://picsum.photos/seed/cap-black/600/450",
-                    "ขาว": "https://picsum.photos/seed/cap-white/600/450"
-                },
-                colors: ["ดำ", "ขาว"], sizes: []
-            },
-            {
-                id: 5, name: "ร่ม", category: "ร่ม", price: 290,
-                images: {
-                    "Nile": "https://picsum.photos/seed/umbrella-nile/600/450",
-                    "Cloudy": "https://picsum.photos/seed/umbrella-cloudy/600/450"
-                },
-                colors: ["Nile", "Cloudy"], sizes: []
-            },
-            {
-                id: 6, name: "เข็มกลัด", category: "ของที่ระลึก", price: 90,
-                images: { "Chateau": "https://picsum.photos/seed/pin-chateau/600/450" },
-                colors: ["Chateau"], sizes: []
-            },
-            {
-                id: 7, name: "สมุด", category: "สมุด", price: 120,
-                images: {
-                    "Chateau": "https://picsum.photos/seed/notebook-chateau/600/450",
-                    "Bermuda": "https://picsum.photos/seed/notebook-bermuda/600/450"
-                },
-                colors: ["Chateau", "Bermuda"], sizes: []
-            },
-            {
-                id: 8, name: "ปากกา", category: "ปากกา", price: 60,
-                images: {
-                    "Nile": "https://picsum.photos/seed/pen-nile/600/450",
-                    "Cloudy": "https://picsum.photos/seed/pen-cloudy/600/450"
-                },
-                colors: ["Nile", "Cloudy"], sizes: []
-            }
-        ];
-
-        /* ========= State ========= */
-        const CART_KEY = "csmju_cart_v1";
-        let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-        let activeProduct = null; // สำหรับ modal
-
-        /* ========= Helpers ========= */
-        const fmt = n => n.toLocaleString("th-TH");
-        const saveCart = () => localStorage.setItem(CART_KEY, JSON.stringify(cart));
-        const byId = id => document.getElementById(id);
-
-        /* ========= Build filters ========= */
-        (function buildFilters() {
-            const sel = byId("filterCategory");
-            [...new Set(PRODUCTS.map(p => p.category))].forEach(c => {
-                const o = document.createElement("option");
-                o.value = c; o.textContent = c; sel.appendChild(o);
-            });
-        })();
-
-        /* ========= Render Products ========= */
-        function renderProducts() {
-            const grid = byId("grid");
-            grid.innerHTML = "";
-            const fCat = byId("filterCategory").value;
-            const fColor = byId("filterColor").value;
-            const fSize = byId("filterSize").value;
-
-            PRODUCTS
-                .filter(p => !fCat || p.category === fCat)
-                .filter(p => !fColor || (p.colors || []).includes(fColor))
-                .filter(p => !fSize || (p.sizes || []).includes(fSize))
-                .forEach(p => {
-                    const defaultColor = p.colors?.[0] || "";
-                    const img = defaultColor ? p.images[defaultColor] : Object.values(p.images)[0];
-                    const card = document.createElement("article");
-                    card.className = "card"; card.setAttribute("role", "listitem");
-                    card.innerHTML = `
-        <img class="card-img" src="${img}" alt="${p.name}">
-        <div class="card-body">
-          <h3 class="card-title">${p.name}</h3>
-          <div class="price">${fmt(p.price)} บาท</div>
-          <div class="card-actions">
-            <button class="btn-outline" aria-label="ดูรายละเอียด ${p.name}">ดูรายละเอียด</button>
-            <button class="btn-outline" aria-label="เพิ่ม ${p.name} ลงตะกร้า">+ ตะกร้า</button>
-          </div>
-        </div>`;
-                    const [btnDetail, btnAdd] = card.querySelectorAll("button");
-                    btnDetail.onclick = () => openModal(p.id);
-                    btnAdd.onclick = () => addToCart(p, { color: defaultColor, size: "", qty: 1 });
-                    grid.appendChild(card);
-                });
-        }
-        byId("filterCategory").onchange = renderProducts;
-        byId("filterColor").onchange = renderProducts;
-        byId("filterSize").onchange = renderProducts;
-
-        /* ========= Modal ========= */
-        function openModal(id) {
-            activeProduct = PRODUCTS.find(p => p.id === id);
-            if (!activeProduct) return;
-            const title = byId("modalTitle"), price = byId("modalPrice"),
-                img = byId("modalImg"), colorSel = byId("modalColor"),
-                sizeSel = byId("modalSize"), qtySel = byId("modalQty");
-
-            title.textContent = activeProduct.name;
-            price.textContent = `${fmt(activeProduct.price)} บาท`;
-
-            // build colors
-            colorSel.innerHTML = "";
-            (activeProduct.colors || ["—"]).forEach(c => {
-                const o = document.createElement("option"); o.value = c; o.textContent = c; colorSel.appendChild(o);
-            });
-
-            // sizes (บางสินค้าจะว่าง)
-            sizeSel.value = "";
-            if (!(activeProduct.sizes || []).length) { sizeSel.disabled = true; } else { sizeSel.disabled = false; }
-
-            // default image
-            const dColor = colorSel.value || Object.keys(activeProduct.images)[0];
-            img.src = activeProduct.images[dColor]; img.alt = `${activeProduct.name} - ${dColor}`;
-
-            colorSel.onchange = () => {
-                const col = colorSel.value;
-                img.src = activeProduct.images[col];
-                img.alt = `${activeProduct.name} - ${col}`;
-            };
-            qtySel.value = "1";
-
-            document.getElementById("productModal").classList.add("open");
-        }
-        function closeModal() {
-            document.getElementById("productModal").classList.remove("open");
-            activeProduct = null;
-        }
-        function addFromModal() {
-            const color = byId("modalColor").value || "";
-            const size = byId("modalSize").disabled ? "" : byId("modalSize").value;
-            const qty = parseInt(byId("modalQty").value || "1", 10);
-            addToCart(activeProduct, { color, size, qty });
-            closeModal();
-        }
-
-        /* ========= Cart ========= */
-        function addToCart(product, { color = "", size = "", qty = 1 }) {
-            const key = `${product.id}|${color}|${size}`;
-            const found = cart.find(i => i.key === key);
-            if (found) { found.qty += qty; }
-            else {
-                cart.push({
-                    key, id: product.id, name: product.name, price: product.price,
-                    color, size, qty,
-                    image: color && product.images[color] ? product.images[color] : Object.values(product.images)[0]
-                });
-            }
-            saveCart(); renderCart();
-        }
-        function renderCart() {
-            const wrap = byId("cartItems"); wrap.innerHTML = "";
-            let total = 0, count = 0;
-            cart.forEach(item => {
-                total += item.price * item.qty; count += item.qty;
-                const row = document.createElement("div");
-                row.className = "flyout-item";
-                row.innerHTML = `
-      <img class="thumb" src="${item.image}" alt="${item.name}">
-      <div class="meta">
-        <h5>${item.name}</h5>
-        <div class="sub">${item.color ? `สี: ${item.color}` : ""} ${item.size ? `| ไซส์: ${item.size}` : ""}</div>
-        <div class="qty">
-          <button aria-label="ลดจำนวน" onclick="chgQty('${item.key}',-1)">-</button>
-          <span>${item.qty}</span>
-          <button aria-label="เพิ่มจำนวน" onclick="chgQty('${item.key}',1)">+</button>
-          <button aria-label="ลบ" onclick="removeItem('${item.key}')" style="margin-left:8px">ลบ</button>
-        </div>
-      </div>
-      <strong>${fmt(item.price * item.qty)}฿</strong>`;
-                wrap.appendChild(row);
-            });
-            byId("cartTotal").textContent = fmt(total);
-            byId("cartCount").textContent = count;
-        }
-        function chgQty(key, delta) {
-            const it = cart.find(i => i.key === key); if (!it) return;
-            it.qty += delta; if (it.qty <= 0) cart = cart.filter(i => i.key !== key);
-            saveCart(); renderCart();
-        }
-        function removeItem(key) {
-            cart = cart.filter(i => i.key !== key); saveCart(); renderCart();
-        }
-        function toggleCart() { byId("cartFlyout").classList.toggle("open"); }
-        function goCheckout() {
-            // ย้ายไปหน้า checkout พร้อมตะกร้าใน localStorage
-            window.location.href = "checkout.html";
-        }
-
-        /* ========= Init ========= */
-        renderProducts(); renderCart();
-    </script>
 </body>
 
 </html>

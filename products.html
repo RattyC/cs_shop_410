@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CSMJU Souvenir — สินค้าที่ระลึก 30 ปี</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="pic/logo.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
@@ -37,7 +38,6 @@
             color: inherit
         }
 
-        /* Navbar */
         .navbar {
             position: sticky;
             top: 0;
@@ -58,7 +58,6 @@
 
         .logo {
             height: 40px;
-            filter: brightness(0) invert(1)
         }
 
         .nav-links {
@@ -112,7 +111,6 @@
             right: -10px
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(180deg, rgba(37, 55, 70, 0.8), rgba(37, 55, 70, 0.6)), url('pic/t-1.jpg') center/cover no-repeat;
             color: #fff;
@@ -140,7 +138,6 @@
             background: var(--chateau)
         }
 
-        /* Product Grid */
         .wrap {
             max-width: 1280px;
             margin: auto;
@@ -198,7 +195,6 @@
             background: var(--dawn)
         }
 
-        /* Cart Drawer */
         .cart-toggle {
             position: fixed;
             bottom: 16px;
@@ -296,7 +292,6 @@
             margin-bottom: 8px
         }
 
-        /* Modal */
         .modal {
             position: fixed;
             inset: 0;
@@ -358,17 +353,14 @@
 
 <body>
 
-    <!-- Navbar -->
     <header class="navbar">
         <div class="nav-container">
             <div>
-                <img src="pic/logo.jpg" alt="Logo" class="logo" onclick="window.location.href='index.html'" style="cursor: pointer" >
+                <img src="pic/logo.png" alt="Logo" class="logo"  >
             </div>
             <nav class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="products.html">Products</a>
-                <a href="accessories.html">Accessories</a>
-                <a href="brands.html">Brands</a>
                 <a href="contact.html">Contact</a>
                 <a href="admin.html" class="admin-link">Admin</a>
             </nav>
@@ -381,19 +373,16 @@
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>ของที่ระลึกครบรอบ 30 ปี วิทยาการคอมพิวเตอร์</h1>
         <button class="btn"
             onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">เลือกชมสินค้า</button>
     </section>
 
-    <!-- Products -->
     <main class="wrap" id="products">
         <div class="grid" id="grid"></div>
     </main>
 
-    <!-- Cart Drawer -->
     <button class="cart-toggle" onclick="toggleCart()">ตะกร้า (<span id="cartCount">0</span>)</button>
     <aside id="drawer" class="drawer">
         <div class="d-head"><b>ตะกร้าสินค้า</b><button class="btn-outline" onclick="toggleCart()">ปิด</button></div>
@@ -404,7 +393,6 @@
         </div>
     </aside>
 
-    <!-- Modal -->
     <div id="modal" class="modal">
         <div class="m-card">
             <button class="closex" onclick="closeModal()">✕</button>
@@ -426,7 +414,7 @@
     <footer>© 2025 CSMJU Souvenir Shop</footer>
 
     <script>
-        /* Products color & size */
+
         const PRODUCTS = [
             { id: 1, name: "เสื้อยืดครบรอบ 30 ปี", price: 250, image: "pic/t-1.jpg", colors: ["ดำ", "ขาว"], sizes: ["S", "M", "L", "XL", "2XL", "3XL"] },
             { id: 2, name: "แก้วน้ำ CSMJU", price: 150, image: "pic/bottle.jpg", colors: ["ดำ", "ขาว"], sizes: ["12oz", "24oz"] },
