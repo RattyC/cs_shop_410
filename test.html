@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSMJU Souvenir — สินค้าที่ระลึก 30 ปี</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --nile: #253746;
+            --bermuda: #6B7B8C;
+            --chateau: #A3A9B3;
+            --cloudy: #BEC5C7;
+            --dawn: #F6F8F9;
+            --white: #fff;
+            --danger: #b91c1c;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            font-family: 'Prompt', sans-serif;
+            background: var(--dawn);
+            color: var(--nile)
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #1f1f1f;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: auto;
+            padding: 10px 20px
+        }
+
+        .logo {
+            height: 40px;
+            filter: brightness(0) invert(1)
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px
+        }
+
+        .nav-links a {
+            color: #dcdcdc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .admin-link {
+            color: #ffbb33
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 14px
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative
+        }
+
+        .icon-btn:hover {
+            color: #fff
+        }
+
+        .badge {
+            background: #ff4d4d;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 5px;
+            border-radius: 8px;
+            position: absolute;
+            top: -6px;
+            right: -10px
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, rgba(37, 55, 70, 0.8), rgba(37, 55, 70, 0.6)), url('pic/t-1.jpg') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 50px 16px
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 12px
+        }
+
+        .btn {
+            background: var(--bermuda);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            background: var(--chateau)
+        }
+
+        /* Product Grid */
+        .wrap {
+            max-width: 1280px;
+            margin: auto;
+            padding: 20px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px
+        }
+
+        .prod {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column
+        }
+
+        .prod img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover
+        }
+
+        .p-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .p-title {
+            font-weight: 700
+        }
+
+        .price {
+            font-weight: 800;
+            color: var(--nile)
+        }
+
+        .btn-outline {
+            border: 1px solid var(--bermuda);
+            background: #fff;
+            color: var(--nile);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .btn-outline:hover {
+            background: var(--dawn)
+        }
+
+        /* Cart Drawer */
+        .cart-toggle {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 50;
+            background: var(--bermuda);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 16px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            cursor: pointer
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 340px;
+            max-width: 100%;
+            height: 100%;
+            background: #fff;
+            border-left: 1px solid var(--cloudy);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+            transition: right .3s ease;
+            z-index: 60;
+            display: flex;
+            flex-direction: column
+        }
+
+        .drawer.open {
+            right: 0
+        }
+
+        .d-head {
+            background: var(--nile);
+            color: #fff;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .d-body {
+            flex: 1;
+            overflow: auto;
+            padding: 12px 16px
+        }
+
+        .d-foot {
+            border-top: 1px solid var(--cloudy);
+            padding: 12px 16px
+        }
+
+        .item {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--cloudy)
+        }
+
+        .meta {
+            flex: 1
+        }
+
+        .qty {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            margin-top: 6px
+        }
+
+        .qty button {
+            width: 26px;
+            height: 26px;
+            border: 1px solid var(--cloudy);
+            background: #fff;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .sum {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            margin-bottom: 8px
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 80;
+            padding: 16px
+        }
+
+        .modal.open {
+            display: flex
+        }
+
+        .m-card {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            padding: 16px;
+            position: relative;
+            display: grid;
+            gap: 10px
+        }
+
+        .m-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px
+        }
+
+        .closex {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            background: #eee;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer
+        }
+
+        .m-opt {
+            margin-top: 8px
+        }
+
+        footer {
+            background: var(--nile);
+            color: #fff;
+            text-align: center;
+            padding: 16px;
+            margin-top: 24px
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div>
+                <img src="pic/logo.jpg" alt="Logo" class="logo" onclick="window.location.href='index.html'" style="cursor: pointer" >
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="products.html">Products</a>
+                <a href="accessories.html">Accessories</a>
+                <a href="brands.html">Brands</a>
+                <a href="contact.html">Contact</a>
+                <a href="admin.html" class="admin-link">Admin</a>
+            </nav>
+            <div class="nav-icons">
+                <button class="icon-btn"><i class="fa fa-search"></i></button>
+                <button class="icon-btn"><i class="fa fa-user"></i></button>
+                <button class="icon-btn" onclick="toggleCart()"><i class="fa fa-shopping-cart"></i><span id="cartCount"
+                        class="badge">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>ของที่ระลึกครบรอบ 30 ปี วิทยาการคอมพิวเตอร์</h1>
+        <button class="btn"
+            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">เลือกชมสินค้า</button>
+    </section>
+
+    <!-- Products -->
+    <main class="wrap" id="products">
+        <div class="grid" id="grid"></div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <button class="cart-toggle" onclick="toggleCart()">ตะกร้า (<span id="cartCount">0</span>)</button>
+    <aside id="drawer" class="drawer">
+        <div class="d-head"><b>ตะกร้าสินค้า</b><button class="btn-outline" onclick="toggleCart()">ปิด</button></div>
+        <div id="cartList" class="d-body"></div>
+        <div class="d-foot">
+            <div class="sum">รวมทั้งหมด <span id="cartTotal">0</span> บาท</div>
+            <button class="btn" style="width:100%" onclick="goCheckout()">ไปชำระเงิน</button>
+        </div>
+    </aside>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="m-card">
+            <button class="closex" onclick="closeModal()">✕</button>
+            <img id="mImg" class="m-img">
+            <h3 id="mTitle"></h3>
+            <div id="mPrice" class="price"></div>
+            <div class="m-opt"><label>สี</label><select id="mColor"></select></div>
+            <div class="m-opt" id="sizeBlock"><label>ขนาด</label><select id="mSize"></select></div>
+            <div class="m-opt"><label>จำนวน</label><select id="mQty">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select></div>
+            <button class="btn" onclick="addFromModal()">เพิ่มลงตะกร้า</button>
+        </div>
+    </div>
+
+    <footer>© 2025 CSMJU Souvenir Shop</footer>
+
+    <script>
+        /* Products color & size */
+        const PRODUCTS = [
+            { id: 1, name: "เสื้อยืดครบรอบ 30 ปี", price: 250, image: "pic/t-1.jpg", colors: ["ดำ", "ขาว"], sizes: ["S", "M", "L", "XL", "2XL", "3XL"] },
+            { id: 2, name: "แก้วน้ำ CSMJU", price: 150, image: "pic/bottle.jpg", colors: ["ดำ", "ขาว"], sizes: ["12oz", "24oz"] },
+            { id: 3, name: "หมวก 30 ปี", price: 180, image: "pic/cap1.jpg", colors: ["ดำ", "ขาว"], sizes: [] },
+            { id: 4, name: "กระเป๋า CSMJU", price: 350, image: "pic/bag.jpg", colors: ["เทา", "ดำ"], sizes: [] },
+            { id: 5, name: "เข็มกลัดรุ่นพิเศษ", price: 90, image: "pic/brooch.jpg", colors: ["เงิน", "ทอง"], sizes: [] }
+        ];
+
+        const CART_KEY = "csmju_cart_v1";
+        let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        const $ = id => document.getElementById(id); const fmt = n => n.toLocaleString("th-TH");
+        let modalProduct = null;
+
+        function renderProducts() {
+            $("grid").innerHTML = "";
+            PRODUCTS.forEach(p => {
+                const card = document.createElement("article");
+                card.className = "prod";
+                card.innerHTML = `
+        <img src="${p.image}">
+        <div class="p-body">
+            <div class="p-title">${p.name}</div>
+            <div class="price">${fmt(p.price)} บาท</div>
+            <button class="btn-outline" onclick="openModal(${p.id})">เลือกตัวเลือก</button>
+        </div>`;
+                $("grid").appendChild(card);
+            });
+        }
+
+        function openModal(id) {
+            modalProduct = PRODUCTS.find(p => p.id === id);
+            $("mTitle").textContent = modalProduct.name;
+            $("mPrice").textContent = `${fmt(modalProduct.price)} บาท`;
+            $("mImg").src = modalProduct.image;
+
+            $("mColor").innerHTML = modalProduct.colors.map(c => `<option>${c}</option>`).join("");
+            if (modalProduct.sizes.length > 0) {
+                $("sizeBlock").style.display = "block";
+                $("mSize").innerHTML = modalProduct.sizes.map(s => `<option>${s}</option>`).join("");
+            } else { $("sizeBlock").style.display = "none"; }
+            $("modal").classList.add("open");
+        }
+        function closeModal() { $("modal").classList.remove("open"); }
+
+        function addFromModal() {
+            const color = $("mColor").value;
+            const size = modalProduct.sizes.length > 0 ? $("mSize").value : "";
+            const qty = parseInt($("mQty").value);
+            const key = `${modalProduct.id}-${color}-${size}`;
+            const found = cart.find(i => i.key === key);
+            if (found) { found.qty += qty; }
+            else {
+                cart.push({ key, id: modalProduct.id, name: modalProduct.name, price: modalProduct.price, color, size, qty, image: modalProduct.image });
+            }
+            saveCart(); renderCart(); closeModal();
+        }
+
+        function renderCart() {
+            $("cartList").innerHTML = "";
+            let total = 0, count = 0;
+            cart.forEach(it => {
+                total += it.price * it.qty; count += it.qty;
+                const row = document.createElement("div");
+                row.className = "item";
+                row.innerHTML = `
+        <img src="${it.image}" class="thumb">
+        <div class="meta">
+            <b>${it.name}</b>
+            <div style="font-size:0.85rem;color:#666">${it.color || ""} ${it.size || ""}</div>
+            <div class="qty">
+            <button onclick="chgQty('${it.key}',-1)">-</button>
+            <span>${it.qty}</span>
+            <button onclick="chgQty('${it.key}',1)">+</button>
+            <button style="margin-left:6px" onclick="removeItem('${it.key}')">ลบ</button>
+            </div>
+        </div>
+        <b>${fmt(it.price * it.qty)}฿</b>`;
+                $("cartList").appendChild(row);
+            });
+            $("cartTotal").textContent = fmt(total);
+            $("cartCount").textContent = count;
+        }
+
+        function chgQty(key, delta) {
+            const it = cart.find(i => i.key === key);
+            if (!it) return;
+            it.qty += delta;
+            if (it.qty <= 0) cart = cart.filter(i => i.key !== key);
+            saveCart(); renderCart();
+        }
+        function removeItem(key) { cart = cart.filter(i => i.key !== key); saveCart(); renderCart(); }
+        function saveCart() { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+        function toggleCart() { $("drawer").classList.toggle("open"); }
+        function goCheckout() { window.location.href = "checkout.html"; }
+
+        renderProducts(); renderCart();
+    </script>
+</body>
+
+</html>

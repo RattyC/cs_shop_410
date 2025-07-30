@@ -1,192 +1,155 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>จัดการสินค้า | CSMJU Souvenir Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/ad.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSMJU Souvenir Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        select,
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.product-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(section).classList.remove('hidden');
+        }
+    </script>
 </head>
+
 <body>
-    <header>
-        <div class="nav-container container flex justify-between items-center">
-            <div class="logo " >CSMJU Souvenir Shop - Admin</div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <a href="index.html">หน้าแรก</a>
-                <a href="order.html">สั่งซื้อ</a>
-                <a href="admin.html" class="active">จัดการสินค้า</a>
-                <a href="report.html">รายงานยอดขาย</a>
-            </nav>
-        </div>
-    </header>
+    <nav>
+        <h1>CSMJU Souvenir Admin</h1>
+        <ul>
+            <li onclick="showSection('shirt')">เสื้อ</li>
+            <li onclick="showSection('other')">สินค้าอื่น ๆ</li>
+            <li onclick="showSection('summary')">ยอดสั่งซื้อ</li>
+        </ul>
+    </nav>
 
-    <main class="container">
-        <section class="section order-section">
-            <h2>เพิ่ม / แก้ไข สินค้า</h2>
-            <form id="productForm" enctype="multipart/form-data">
-                <label for="productName">ชื่อสินค้า</label>
-                <input type="text" id="productName" name="productName" placeholder="เช่น เสื้อครบรอบ 30 ปี" required />
-
-                <label for="productType">ประเภทสินค้า</label>
-                <select id="productType" name="productType" required>
-                    <option value="" disabled selected>เลือกประเภทสินค้า</option>
-                    <option value="เสื้อ">เสื้อ</option>
-                    <option value="แก้ว">แก้ว</option>
-                    <option value="หมวก">หมวก</option>
-                    <option value="กระเป๋า">กระเป๋า</option>
-                    <option value="ร่ม">ร่ม</option>
-                    <option value="เข็มกลัด">เข็มกลัด</option>
-                    <option value="สมุด">สมุด</option>
-                    <option value="ปากกา">ปากกา</option>
-                </select>
-
-                <label for="color">สี</label>
-                <select id="color" name="color" required>
-                    <option value="" disabled selected>เลือกสี</option>
-                    <option value="ขาว">ขาว</option>
-                    <option value="เทา">เทา</option>
-                    <option value="ดำ">ดำ</option>
-                </select>
-
-                <label for="size">ขนาด (ถ้ามี)</label>
-                <select id="size" name="size">
-                    <option value="" selected>ไม่ระบุ</option>
-                    <option value="SS">SS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="2XL">2XL</option>
-                </select>
-
-                <label for="price">ราคา (บาท)</label>
-                <input type="number" id="price" name="price" placeholder="เช่น 250" min="0" step="1" required />
-
-                <label for="stock">จำนวนสต๊อกเริ่มต้น</label>
-                <input type="number" id="stock" name="stock" placeholder="เช่น 50" min="0" step="1" required />
-
-                <label for="image">อัปโหลดรูปภาพสินค้า</label>
-                <input type="file" id="image" name="image" accept="image/*" />
-
-                <button type="submit" class="btn-primary">บันทึกสินค้า</button>
-            </form>
+    <main>
+        <section id="shirt" class="product-section">
+            <h2>เพิ่มสินค้า - เสื้อ</h2>
+            <label>ขนาด</label>
+            <select>
+                <option>SS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>2XL</option>
+            </select>
+            <label>สี</label>
+            <select>
+                <option>ขาว</option>
+                <option>ดำ</option>
+                <option>เทา</option>
+            </select>
+            <label>ราคา</label>
+            <input type="number" placeholder="เช่น 250">
+            <label>อัพโหลดรูปภาพ</label>
+            <input type="file">
+            <button type="submit">บันทึก</button>
         </section>
 
-        <section class="section">
-            <h2>รายการสินค้า</h2>
-            <table id="productsTable" aria-label="ตารางรายการสินค้า">
-                <thead>
-                    <tr>
-                        <th>ชื่อสินค้า</th>
-                        <th>ประเภท</th>
-                        <th>สี</th>
-                        <th>ขนาด</th>
-                        <th>ราคา (บาท)</th>
-                        <th>สต๊อก</th>
-                        <th>รูปภาพ</th>
-                        <th>จัดการ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- ตัวอย่างสินค้า -->
-                    <tr>
-                        <td>เสื้อครบรอบ 30 ปี</td>
-                        <td>เสื้อ</td>
-                        <td>ดำ</td>
-                        <td>M</td>
-                        <td>250</td>
-                        <td>40</td>
-                        <td><img src="pic/t-1.jpg" alt="เสื้อครบรอบ 30 ปี" class="product-thumb" /></td>
-                        <td>
-                            <button class="btn-edit">แก้ไข</button>
-                            <button class="btn-delete">ลบ</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <section id="other" class="product-section hidden">
+            <h2>เพิ่มสินค้า - อื่น ๆ</h2>
+            <label>ประเภทสินค้า</label>
+            <select>
+                <option>กระเป๋า</option>
+                <option>แก้ว</option>
+                <option>หมวก</option>
+                <option>ร่ม</option>
+                <option>เข็มกลัด</option>
+                <option>สมุด</option>
+                <option>ปากกา</option>
+            </select>
+            <label>ราคา</label>
+            <input type="number">
+            <label>อัพโหลดรูปภาพ</label>
+            <input type="file">
+            <button type="submit">บันทึก</button>
+        </section>
+
+        <section id="summary" class="product-section hidden">
+            <h2>ยอดสั่งซื้อรวม</h2>
+            <p><strong>รวมรายการสั่งซื้อ:</strong> 42 รายการ</p>
+            <p><strong>ยอดขายรวม:</strong> 12,600 บาท</p>
+            <p><strong>ช่องทางที่นิยม:</strong> โอนพร้อมเพย์ (70%)</p>
         </section>
     </main>
-
-    <footer>
-        &copy; 2025 สาขาวิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้
-    </footer>
-
-    <script>
-        // Toggle mobile nav
-        const navToggle = document.querySelector('.nav-toggle');
-        const nav = document.querySelector('nav');
-        navToggle.addEventListener('click', () => {
-            nav.classList.toggle('nav-open');
-            navToggle.classList.toggle('open');
-        });
-
-        // Form and Table logic placeholder (for future extension)
-        const productForm = document.getElementById('productForm');
-        const productsTableBody = document.querySelector('#productsTable tbody');
-
-        productForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(productForm);
-
-            // สร้างแถวใหม่ในตาราง (สมมติยังไม่มี backend)
-            const tr = document.createElement('tr');
-
-            // รูปภาพ (ถ้าอัปโหลด)
-            let imgTd = document.createElement('td');
-            if (formData.get('image') && formData.get('image').name) {
-                const img = document.createElement('img');
-                img.classList.add('product-thumb');
-                img.alt = formData.get('productName');
-                img.src = URL.createObjectURL(formData.get('image'));
-                imgTd.appendChild(img);
-            } else {
-                imgTd.textContent = '-';
-            }
-
-            tr.innerHTML = `
-        <td>${formData.get('productName')}</td>
-        <td>${formData.get('productType')}</td>
-        <td>${formData.get('color')}</td>
-        <td>${formData.get('size') || '-'}</td>
-        <td>${formData.get('price')}</td>
-        <td>${formData.get('stock')}</td>`;
-            tr.appendChild(imgTd);
-
-            // จัดการแถว (แก้ไข, ลบ)
-            const actionTd = document.createElement('td');
-            const editBtn = document.createElement('button');
-            editBtn.textContent = 'แก้ไข';
-            editBtn.classList.add('btn-edit');
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'ลบ';
-            deleteBtn.classList.add('btn-delete');
-            actionTd.appendChild(editBtn);
-            actionTd.appendChild(deleteBtn);
-            tr.appendChild(actionTd);
-
-            productsTableBody.appendChild(tr);
-
-            productForm.reset();
-        });
-
-        // Event delegation for delete
-        productsTableBody.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-delete')) {
-                if (confirm('คุณแน่ใจหรือไม่ว่าต้องการลบสินค้านี้?')) {
-                    e.target.closest('tr').remove();
-                }
-            }
-            // ฟีเจอร์แก้ไขเพิ่มได้ในอนาคต
-        });
-    </script>
 </body>
 
 </html>
