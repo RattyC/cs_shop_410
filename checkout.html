@@ -2,89 +2,368 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Form | CSMJU Souvenir Shop</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout / ชำระเงิน | CSMJU Souvenir Shop</title>
     <link rel="icon" type="image/png" href="pic/logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <style>
-        .order-form-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 25px 30px;
-            border-radius: 10px;
-            border: 1px solid var(--cloudy);
+        :root {
+            --nile: #253746;
+            --bermuda: #6B7B8C;
+            --chateau: #A3A9B3;
+            --cloudy: #BEC5C7;
+            --dawn: #F6F8F9;
+            --radius: 12px;
+            --shadow: 0 24px 60px -10px rgba(37, 55, 70, .15);
+            --transition: .25s cubic-bezier(.4, .2, .2, 1);
+            --focus: #ffbb33;
         }
 
-        .order-form-container h2 {
-            text-align: center;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Prompt', sans-serif;
+            background: var(--dawn);
+            color: #1f1f1f;
+            line-height: 1.45;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
         }
 
-        form label {
+        .small {
+            font-size: .85rem;
+            color: #666;
+        }
+
+        .divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin: 18px 0;
+        }
+
+        label {
             display: block;
-            margin-top: 15px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
-        form input,
-        form select,
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 6px;
-            border: 1px solid var(--cloudy);
-            border-radius: 6px;
-            font-family: 'Prompt', sans-serif;
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #1f1f1f;
+            color: #fff;
         }
 
-        form textarea {
-            min-height: 80px;
-            resize: vertical;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: auto;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--cloudy);
+            border-radius: 8px;
+            font-size: .95rem;
+            font-family: 'Prompt', sans-serif;
+            background: #fff;
+            transition: border var(--transition), box-shadow var(--transition);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--nile);
+            box-shadow: 0 0 0 3px rgba(37, 55, 70, .15);
         }
 
         .radio-group {
             display: flex;
-            gap: 20px;
-            margin-top: 8px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .btn-submit {
-            margin-top: 25px;
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--bermuda);
-            color: #fff;
-            font-weight: bold;
-            border: none;
+        .radio-group label {
+            position: relative;
+            padding: 10px 16px;
+            border: 1px solid rgba(0, 0, 0, .05);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fafafa;
+            transition: all var(--transition);
+            font-weight: 500;
+        }
+
+        .radio-group input {
+            accent-color: var(--nile);
+            margin-right: 6px;
+        }
+
+        .radio-group label:hover {
+            background: #f5f5f5;
+        }
+
+        .radio-group input:focus-visible {
+            outline: 2px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        .checkout-wrapper {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+            padding: 0 16px;
+        }
+
+        .section {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 12px;
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 1080px) {
+            .checkout-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .field-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .order-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 8px;
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+        }
+
+        .summary-item .info {
+            flex: 1;
+            font-size: .95rem;
+        }
+
+        .summary-item .price {
+            font-weight: 700;
+        }
+
+        .totals {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .totals .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: .95rem;
+        }
+
+        .totals .row.total {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .slip-preview {
+            margin-top: 8px;
+            max-width: 100%;
+            border: 1px solid var(--cloudy);
             border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .btn-confirm {
+            margin-top: 10px;
+            padding: 16px;
+            background: var(--nile);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition);
+        }
+
+        .btn-confirm:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-confirm:active {
+            transform: scale(.98);
+        }
+
+        .btn-confirm[disabled] {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .btn-confirm .spinner {
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1f3f5f;
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 10px;
+            box-shadow: 0 16px 40px -5px rgba(37, 55, 70, 0.5);
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 500;
+            max-width: 340px;
+            animation: slideIn .4s ease-out;
+        }
+
+        .toast.success {
+            border-left: 5px solid #4ade80;
+        }
+
+        .toast.error {
+            border-left: 5px solid #f87171;
+        }
+
+        .toast .close-toast {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
             cursor: pointer;
         }
 
-        .btn-submit:hover {
-            background: var(--chateau);
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        footer {
+            background: var(--nile);
+            color: #fff;
+            text-align: center;
+            padding: 10px 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
     <header class="navbar">
         <div class="nav-container">
             <img src="pic/logo.png" alt="CSMJU Logo" class="logo">
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="products.html">Products</a>
-                <a href="order.html" class="active">Order</a>
                 <a href="admin.html" class="admin-link">Admin</a>
             </nav>
             <div class="nav-icons">
@@ -95,55 +374,214 @@
         </div>
     </header>
 
-    <!-- Order Form -->
-    <section class="order-form-container">
-        <h2>แบบฟอร์มสั่งซื้อสินค้า</h2>
-        <form id="orderForm" enctype="multipart/form-data">
-            <label>ชื่อ-นามสกุล *</label>
-            <input type="text" name="fullname" placeholder="ระบุชื่อ-นามสกุล" required>
-
-            <label>ที่อยู่สำหรับจัดส่ง *</label>
-            <textarea name="address" placeholder="บ้านเลขที่, ถนน, แขวง/ตำบล, เขต/อำเภอ, จังหวัด, รหัสไปรษณีย์"
-                required></textarea>
-
-            <label>เบอร์โทรศัพท์ *</label>
-            <input type="tel" name="phone" placeholder="08xxxxxxxx" required pattern="[0-9]{10}">
-
-            <label>รายการสินค้า *</label>
-            <textarea name="products" placeholder="ระบุสินค้าที่ต้องการ เช่น เสื้อ M สีดำ 2 ตัว, แก้ว 24oz 1 ใบ"
-                required></textarea>
-
-            <label>อัปโหลดสลิปการโอนเงิน *</label>
-            <input type="file" name="slip" accept="image/*" required>
-
-            <label>วันที่สั่งซื้อ *</label>
-            <input type="date" name="order_date" required>
-
-            <label>การจัดส่ง *</label>
-            <div class="radio-group">
-                <label><input type="radio" name="delivery" value="จัดส่ง" required> จัดส่ง</label>
-                <label><input type="radio" name="delivery" value="รับเอง" required> รับเอง</label>
+    <div class="checkout-wrapper">
+        <div class="section">
+            <h2>ข้อมูลผู้สั่งซื้อ</h2>
+            <div class="field-group">
+                <div>
+                    <label for="fullname">ชื่อ-นามสกุล *</label>
+                    <input type="text" id="fullname" required placeholder="เช่น สมชาย ใจดี">
+                </div>
+                <div>
+                    <label for="phone">เบอร์โทรศัพท์ *</label>
+                    <input type="tel" id="phone" required placeholder="08xxxxxxxx" pattern="[0-9]{10}">
+                </div>
             </div>
 
-            <label>ช่องทางชำระเงิน *</label>
-            <div class="radio-group">
-                <label><input type="radio" name="payment" value="โอนผ่านธนาคาร" required> โอนผ่านธนาคาร</label>
-                <label><input type="radio" name="payment" value="เก็บเงินปลายทาง" required> เก็บเงินปลายทาง</label>
+            <div>
+                <label for="address">ที่อยู่จัดส่ง *</label>
+                <textarea id="address" required
+                    placeholder="บ้านเลขที่, ถนน, ตำบล, อำเภอ, จังหวัด, รหัสไปรษณีย์"></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">ยืนยันการสั่งซื้อ</button>
-        </form>
-    </section>
+            <div>
+                <label>วิธีการจัดส่ง *</label>
+                <div class="radio-group" id="deliveryOptions">
+                    <label><input type="radio" name="delivery" value="จัดส่ง" checked> <span>จัดส่ง</span></label>
+                    <label><input type="radio" name="delivery" value="รับเอง"> <span>รับเอง</span></label>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="payment-section">
+                <h2>ช่องทางชำระเงิน</h2>
+                <div class="radio-group" id="paymentOptions">
+                    <label><input type="radio" name="payment" value="โอนผ่านธนาคาร" checked>
+                        <span>โอนผ่านธนาคาร</span></label>
+                    <label><input type="radio" name="payment" value="เก็บเงินปลายทาง">
+                        <span>เก็บเงินปลายทาง</span></label>
+                </div>
+                <div id="bankInfo" class="small">
+                    <div><strong>บัญชีโอนเงิน:</strong> ธนาคารกรุงเทพ เลขที่ 123-456-789 ชื่อบัญชี วิทยาการคอมพิวเตอร์
+                        มหาวิทยาลัยแม่โจ้</div>
+                    <div style="margin-top:4px;">โปรดอัปโหลดสลิปเพื่อยืนยันการชำระเงิน</div>
+                </div>
+
+                <div>
+                    <label for="slip">อัปโหลดสลิปการโอนเงิน *</label>
+                    <input type="file" id="slip" accept="image/*" required>
+                    <img id="slipPreview" class="slip-preview" alt="preview" style="display:none;">
+                </div>
+            </div>
+
+            <button id="confirmBtn" class="btn-confirm">
+                <span class="btn-text">ยืนยันและชำระเงิน</span>
+                <span class="loading" style="display:none;">กำลังบันทึก...</span>
+            </button>
+        </div>
+
+        <div class="section">
+            <h2>สรุปคำสั่งซื้อ</h2>
+            <div id="summaryContainer" class="order-summary">
+            </div>
+            <div class="totals">
+                <div class="row">
+                    <div>รวมย่อย</div>
+                    <div id="subTotal">0 บาท</div>
+                </div>
+                <div class="row">
+                    <div>ค่าจัดส่ง</div>
+                    <div id="shippingFee">50 บาท</div>
+                </div>
+                <div class="row total">
+                    <div>ยอดรวมทั้งหมด</div>
+                    <div id="grandTotal">0 บาท</div>
+                </div>
+            </div>
+            <div class="small">* หากเลือก "รับเอง" จะตัดค่าจัดส่งออกอัตโนมัติ</div>
+        </div>
+    </div>
+
+    <div id="toast-root"></div>
 
     <footer>
         <p>© 2025 CSMJU Souvenir Shop | วิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้</p>
     </footer>
 
+
     <script>
-        document.getElementById("orderForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("บันทึกคำสั่งซื้อเรียบร้อย!");
+        const CART_KEY = "csmju_cart_v1";
+        let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        const fmt = n => n.toLocaleString("th-TH");
+
+        const elem = id => document.getElementById(id);
+
+        function renderSummary() {
+            const container = elem("summaryContainer");
+            container.innerHTML = "";
+            let subtotal = 0;
+            if (cart.length === 0) {
+                container.innerHTML = '<div style="padding:12px;background:#f9f9f9;border-radius:8px;text-align:center;">ยังไม่มีสินค้าจากตะกร้า</div>';
+            }
+            cart.forEach(item => {
+                const lineTotal = item.price * item.qty;
+                subtotal += lineTotal;
+                const div = document.createElement("div");
+                div.className = "summary-item";
+                div.innerHTML = `
+            <div class="info">
+                <div><strong>${item.name}</strong></div>
+                <div style="font-size:.85rem; color:#555;">
+                ${item.color ? `สี: ${item.color}` : ""} ${item.size ? `| ขนาด: ${item.size}` : ""} | จำนวน: ${item.qty}
+                </div>
+            </div>
+            <div class="price">${fmt(lineTotal)}฿</div>
+        `;
+                container.appendChild(div);
+            });
+            const delivery = document.querySelector('input[name="delivery"]:checked')?.value || "จัดส่ง";
+            let shipping = delivery === "รับเอง" ? 0 : 50;
+            elem("subTotal").textContent = fmt(subtotal) + " บาท";
+            elem("shippingFee").textContent = (shipping === 0 ? "0" : fmt(shipping)) + " บาท";
+            elem("grandTotal").textContent = fmt(subtotal + shipping) + " บาท";
+        }
+
+        function showToast(message, type = "success") {
+            const root = document.getElementById("toast-root");
+            const toast = document.createElement("div");
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+        <div>${message}</div>
+        <button class="close-toast" aria-label="ปิด">&times;</button>
+            `;
+            root.appendChild(toast);
+            toast.querySelector(".close-toast").onclick = () => toast.remove();
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                setTimeout(() => toast.remove(), 400);
+            }, 2200);
+        }
+
+        elem("slip").addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            const img = elem("slipPreview");
+            img.src = url;
+            img.style.display = "block";
         });
+
+        document.getElementById("deliveryOptions").addEventListener("change", () => {
+            renderSummary();
+        });
+
+        // form submission
+        document.getElementById("confirmBtn").addEventListener("click", async () => {
+            const fullname = elem("fullname").value.trim();
+            const phone = elem("phone").value.trim();
+            const address = elem("address").value.trim();
+            const payment = document.querySelector('input[name="payment"]:checked')?.value;
+            const delivery = document.querySelector('input[name="delivery"]:checked')?.value;
+            const slip = elem("slip").files[0];
+
+            if (!fullname || !phone.match(/^[0-9]{10}$/) || !address) {
+                showToast("กรุณากรอกข้อมูลผู้สั่งซื้อให้ครบถ้วน", "error");
+                return;
+            }
+            if (cart.length === 0) {
+                showToast("ไม่มีสินค้าในตะกร้า", "error");
+                return;
+            }
+            if (payment === "โอนผ่านธนาคาร" && !slip) {
+                showToast("อัปโหลดสลิปการโอนเงินก่อน", "error");
+                return;
+            }
+            const btn = elem("confirmBtn");
+            btn.disabled = true;
+            btn.querySelector(".btn-text").textContent = "กำลังประมวลผล...";
+            await new Promise(r => setTimeout(r, 1400));
+
+            const order = {
+                id: `ORD${Date.now()}`,
+                fullname, phone, address,
+                delivery, payment,
+                slip: slip ? slip.name : null,
+                cart,
+                subtotal: parseInt(elem("subTotal").textContent.replace(/\D/g, "")) || 0,
+                shipping: delivery === "รับเอง" ? 0 : 50,
+                total: parseInt(elem("grandTotal").textContent.replace(/\D/g, "")) || 0,
+                date: new Date().toISOString()
+            };
+
+            // เก็บลง localStorage ชั่วคราว 
+            const existing = JSON.parse(localStorage.getItem("csmju_orders_v1") || "[]");
+            existing.unshift(order);
+            localStorage.setItem("csmju_orders_v1", JSON.stringify(existing));
+
+            // ล้างตะกร้า
+            localStorage.removeItem(CART_KEY);
+            cart = []; renderSummary();
+
+            showToast("สั่งซื้อสำเร็จ! รอการยืนยัน", "success");
+
+            btn.querySelector(".btn-text").textContent = "เรียบร้อย";
+            setTimeout(() => {
+                window.location.href = "order.html";
+            }, 1000);
+        });
+
+        renderSummary();
     </script>
 </body>
 
