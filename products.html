@@ -2,14 +2,15 @@
 <html lang="th">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSMJU Souvenir — สินค้าที่ระลึก 30 ปี</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Products | CSMJU Souvenir Shop</title>
     <link rel="icon" type="image/png" href="pic/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <style>
         :root {
             --nile: #253746;
@@ -348,6 +349,357 @@
             padding: 16px;
             margin-top: 24px
         }
+
+        .m-card {
+            animation: pop .35s ease-out;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .rating-stars {
+            display: inline-block;
+            color: #f1c40f;
+            font-size: 0.9rem;
+            margin-left: 4px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(37, 55, 70, .95);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+            font-size: 0.9rem;
+            z-index: 300;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toast.success {
+            border-left: 4px solid #4ade80;
+        }
+
+        .variant-badge {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-right: 6px;
+            display: inline-block;
+        }
+
+        /* --- Global Enhancements --- */
+        :focus-visible {
+            outline: 3px solid #ffbb33;
+            outline-offset: 2px;
+        }
+
+        button,
+        select {
+            transition: background .25s ease, transform .15s ease;
+        }
+
+        button:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* --- Product Card --- */
+        .prod {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 12px 30px -5px rgba(37, 55, 70, 0.08);
+        }
+
+        .prod img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--cloudy);
+            border-radius: 8px 8px 0 0;
+            background: #f0f0f0;
+        }
+
+        .prod h4 {
+            margin: 8px 12px 4px;
+            font-size: 1.1rem;
+        }
+
+        .prod .price {
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .prod button {
+            margin: 0 12px 12px;
+            padding: 12px;
+            width: calc(100% - 24px);
+            background: var(--bermuda);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .prod button:hover {
+            background: var(--chateau);
+        }
+
+        .prod button:active {
+            transform: scale(.98);
+        }
+
+        /* Badge & metadata */
+        .variant-badge {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            margin-right: 4px;
+            display: inline-block;
+        }
+
+        /* --- Modal Enhancements --- */
+        .modal {
+            backdrop-filter: blur(8px);
+        }
+
+        .m-card {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            border-radius: 14px;
+            max-width: 680px;
+            width: 100%;
+            padding: 20px 24px;
+            position: relative;
+            display: grid;
+            gap: 18px;
+            box-shadow: 0 30px 60px -5px rgba(37, 55, 70, 0.2);
+        }
+
+        .closex {
+            background: #f5f5f5;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+        }
+
+        .closex:hover {
+            background: #e0e0e0;
+        }
+
+        .m-img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #f0f0f0;
+            display: block;
+        }
+
+        .m-opt select,
+        .m-opt input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--cloudy);
+            border-radius: 8px;
+            font-size: .95rem;
+        }
+
+        #variantSummary {
+            background: rgba(235, 235, 235, .8);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Quantity controls */
+        .m-opt button {
+            background: #fff;
+            border: 1px solid var(--cloudy);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .m-opt button:hover {
+            background: #f7f7f7;
+        }
+
+        .m-opt input[type=number] {
+            width: 60px;
+            text-align: center;
+            border: 1px solid var(--cloudy);
+            border-radius: 6px;
+        }
+
+        /* Features list */
+        #mFeatures {
+            margin: 8px 0 0 16px;
+            padding: 0;
+            list-style: disc;
+            color: #444;
+        }
+
+        /* Stock badge */
+        #badgeStock {
+            font-size: .65rem;
+            font-weight: 500;
+        }
+
+        /* --- Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1f3f5f;
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 10px;
+            box-shadow: 0 16px 40px -5px rgba(37, 55, 70, 0.5);
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 400;
+            max-width: 320px;
+        }
+
+        .toast.success {
+            border-left: 5px solid #4ade80;
+        }
+
+        .toast .close-toast {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* --- Cart Drawer --- */
+        .drawer {
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .d-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .d-body {
+            padding: 16px;
+        }
+
+        .d-foot {
+            padding: 16px;
+        }
+
+        .item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            align-items: center;
+        }
+
+        .item .thumb {
+            flex-shrink: 0;
+            width: 72px;
+            height: 72px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid var(--cloudy);
+        }
+
+        .meta {
+            flex: 1;
+            font-size: .9rem;
+        }
+
+        .qty button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--cloudy);
+            background: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .qty span {
+            display: inline-block;
+            min-width: 28px;
+            text-align: center;
+            margin: 0 6px;
+        }
+
+        /* --- Skeleton Loader (เมื่อโหลดรูป/ข้อมูลช้า) --- */
+        .skeleton {
+            background: linear-gradient(90deg, #ececec 25%, #f5f5f5 50%, #ececec 75%);
+            background-size: 200% 100%;
+            animation: wave 1.5s infinite;
+            border-radius: 6px;
+        }
+
+        @keyframes wave {
+            to {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 1024px) {
+            .m-card {
+                grid-template-columns: 1fr;
+            }
+
+            .prod img {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .prod button {
+                padding: 10px;
+                font-size: .9rem;
+            }
+
+            .variant-badge {
+                font-size: .6rem;
+            }
+        }
     </style>
 </head>
 
@@ -356,7 +708,7 @@
     <header class="navbar">
         <div class="nav-container">
             <div>
-                <img src="pic/logo.png" alt="Logo" class="logo"  >
+                <img src="pic/logo.png" alt="Logo" class="logo">
             </div>
             <nav class="nav-links">
                 <a href="index.html" class="active">Home</a>
@@ -374,18 +726,22 @@
     </header>
 
     <section class="hero">
-        <h1>ของที่ระลึกครบรอบ 30 ปี วิทยาการคอมพิวเตอร์</h1>
-        <button class="btn"
-            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">เลือกชมสินค้า</button>
+        <div class="hero-content">
+            <h1>สินค้าแนะนำ</h1>
+            <p>เลือกของที่ระลึกครบรอบ 30 ปี คุณภาพพรีเมียมจากวิทยาการคอมพิวเตอร์</p>
+        </div>
     </section>
-
-    <main class="wrap" id="products">
-        <div class="grid" id="grid"></div>
+    <main class="wrap">
+        <h2 class="section-title">สินค้าทั้งหมด</h2>
+        <div class="products-grid" id="grid"></div>
     </main>
 
-    <button class="cart-toggle" onclick="toggleCart()">ตะกร้า (<span id="cartCount">0</span>)</button>
+    <button class="cart-toggle" onclick="toggleCart()">ตะกร้า (<span id="cartCountDrawer">0</span>)</button>
     <aside id="drawer" class="drawer">
-        <div class="d-head"><b>ตะกร้าสินค้า</b><button class="btn-outline" onclick="toggleCart()">ปิด</button></div>
+        <div class="d-head">
+            <b>ตะกร้าสินค้า</b>
+            <button class="btn-outline" onclick="toggleCart()">ปิด</button>
+        </div>
         <div id="cartList" class="d-body"></div>
         <div class="d-foot">
             <div class="sum">รวมทั้งหมด <span id="cartTotal">0</span> บาท</div>
@@ -393,109 +749,254 @@
         </div>
     </aside>
 
-    <div id="modal" class="modal">
+    <!-- Enhanced Product Modal -->
+    <div id="modal" class="modal" aria-modal="true" role="dialog">
         <div class="m-card">
-            <button class="closex" onclick="closeModal()">✕</button>
-            <img id="mImg" class="m-img">
-            <h3 id="mTitle"></h3>
-            <div id="mPrice" class="price"></div>
-            <div class="m-opt"><label>สี</label><select id="mColor"></select></div>
-            <div class="m-opt" id="sizeBlock"><label>ขนาด</label><select id="mSize"></select></div>
-            <div class="m-opt"><label>จำนวน</label><select id="mQty">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select></div>
-            <button class="btn" onclick="addFromModal()">เพิ่มลงตะกร้า</button>
+            <button class="closex" aria-label="ปิด" onclick="closeModal()">✕</button>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+                <!-- Left: Image + stock badge -->
+                <div style="position:relative;">
+                    <img id="mImg" class="m-img" alt="product image"
+                        style="width:100%;border-radius:8px;object-fit:cover;">
+                    <div id="badgeStock"
+                        style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.7);color:#fff;padding:6px 10px;border-radius:8px;font-size:.75rem;">
+                        สต็อกเหลือ <span id="stockCount"></span>
+                    </div>
+                </div>
+                <!-- Right: Info -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;justify-content:space-between;align-items:start;gap:10px;">
+                        <div>
+                            <h2 id="mTitle" style="margin:0;font-family:'Playfair Display',serif;font-size:1.6rem;">
+                            </h2>
+                            <div style="font-size:.9rem;color:#999;margin-top:4px;">
+                                คะแนน: <span id="mRating"></span>
+                                <span class="rating-stars">★</span>
+                            </div>
+                        </div>
+                        <div style="font-weight:700;font-size:1.4rem;color:var(--nile);" id="mPrice"></div>
+                    </div>
+                    <p id="mDescription" style="margin:8px 0;color:#444;flex:0;">&nbsp;</p>
+
+                    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                        <div class="m-opt" style="flex:1;min-width:140px;">
+                            <label style="display:block;font-weight:600;margin-bottom:4px;">สี</label>
+                            <select id="mColor"
+                                style="width:100%;padding:8px;border:1px solid var(--cloudy);border-radius:6px;"></select>
+                        </div>
+                        <div class="m-opt" id="sizeBlock" style="flex:1;min-width:140px;">
+                            <label style="display:block;font-weight:600;margin-bottom:4px;">ขนาด</label>
+                            <select id="mSize"
+                                style="width:100%;padding:8px;border:1px solid var(--cloudy);border-radius:6px;"></select>
+                        </div>
+                        <div class="m-opt" style="flex:1;min-width:120px;">
+                            <label style="display:block;font-weight:600;margin-bottom:4px;">จำนวน</label>
+                            <div style="display:flex;gap:6px;align-items:center;">
+                                <button type="button" onclick="decrementQty()"
+                                    style="padding:6px 10px;border:1px solid var(--cloudy);background:#fff;border-radius:6px;cursor:pointer;">−</button>
+                                <input id="mQty" type="number" value="1" min="1"
+                                    style="width:60px;text-align:center;padding:6px;border:1px solid var(--cloudy);border-radius:6px;">
+                                <button type="button" onclick="incrementQty()"
+                                    style="padding:6px 10px;border:1px solid var(--cloudy);background:#fff;border-radius:6px;cursor:pointer;">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                        <div style="flex:1;min-width:180px;">
+                            <div style="font-size:.9rem;margin-bottom:4px;">สรุป:</div>
+                            <div id="variantSummary" style="font-weight:600;">—</div>
+                        </div>
+                        <button class="btn" style="flex:none;" onclick="addFromModal()">เพิ่มลงตะกร้า</button>
+                    </div>
+
+                    <div style="margin-top:12px;font-size:.85rem;color:#666;">
+                        <div><strong>คุณสมบัติ:</strong></div>
+                        <ul id="mFeatures" style="margin:4px 0 0 16px;padding:0;list-style:disc;"></ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer>© 2025 CSMJU Souvenir Shop</footer>
+    <footer>
+        <p>© 2025 CSMJU Souvenir Shop | วิทยาการคอมพิวเตอร์ มหาวิทยาลัยแม่โจ้</p>
+    </footer>
 
     <script>
-
+        // Data & cart logic
         const PRODUCTS = [
-            { id: 1, name: "เสื้อยืดครบรอบ 30 ปี", price: 250, image: "pic/t-1.jpg", colors: ["ดำ", "ขาว"], sizes: ["S", "M", "L", "XL", "2XL", "3XL"] },
-            { id: 2, name: "แก้วน้ำ CSMJU", price: 150, image: "pic/bottle.jpg", colors: ["ดำ", "ขาว"], sizes: ["12oz", "24oz"] },
-            { id: 3, name: "หมวก 30 ปี", price: 180, image: "pic/cap1.jpg", colors: ["ดำ", "ขาว"], sizes: [] },
-            { id: 4, name: "กระเป๋า CSMJU", price: 350, image: "pic/bag.jpg", colors: ["เทา", "ดำ"], sizes: [] },
-            { id: 5, name: "เข็มกลัดรุ่นพิเศษ", price: 90, image: "pic/brooch.jpg", colors: ["เงิน", "ทอง"], sizes: [] }
+            {
+                id: 1, name: "เสื้อยืดครบรอบ 30 ปี", price: 250, image: "pic/t-1.jpg",
+                colors: ["ดำ", "ขาว"], sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+                description: "เสื้อยืดดีไซน์พิเศษฉลอง 30 ปี ภาควิชาวิทยาการคอมพิวเตอร์ เนื้อผ้านุ่ม ระบายอากาศดี พิมพ์ลายลิมิเต็ด",
+                features: ["วัสดุคอตตอน 100%", "งานพิมพ์คุณภาพสูง", "มีทั้งสีดำและขาว", "ไซส์หลากหลายรองรับทุกสรีระ"],
+                rating: 4.7, stock: 100
+            },
+            {
+                id: 2, name: "แก้วน้ำ CSMJU", price: 150, image: "pic/bottle.jpg",
+                colors: ["ดำ", "ขาว"], sizes: ["12oz", "24oz"],
+                description: "แก้วน้ำอลูมิเนียมพกพา พร้อมฝาปิดแน่นหนา เก็บอุณหภูมิได้ดี เหมาะกับทั้งเครื่องดื่มร้อนและเย็น",
+                features: ["เก็บอุณหภูมิได้ยาวนาน", "ฝาปิดกันหก", "ดีไซน์เรียบหรู", "น้ำหนักเบา"],
+                rating: 4.3, stock: 60
+            },
+            {
+                id: 3, name: "หมวก 30 ปี", price: 180, image: "pic/cap1.jpg",
+                colors: ["ดำ", "ขาว"], sizes: [],
+                description: "หมวกแร็ปดีไซน์คลาสสิก โลโก้ CSMJU ปักอย่างดี เหมาะกับทุกวัน",
+                features: ["ปรับขนาดได้", "ผ้าทนทาน", "ปักละเอียด"],
+                rating: 4.5, stock: 30
+            },
+            {
+                id: 4, name: "กระเป๋า CSMJU", price: 350, image: "pic/bag.jpg",
+                colors: ["เทา", "ดำ"], sizes: [],
+                description: "กระเป๋าผ้าเนื้อหนา ขนาดพอดีใส่ของใช้ประจำวัน พร้อมพิมพ์ลาย 30 ปี",
+                features: ["วัสดุแข็งแรง", "สายสะพายกว้าง", "ดีไซน์ใช้งานจริง"],
+                rating: 4.8, stock: 15
+            },
+            {
+                id: 5, name: "เข็มกลัดรุ่นพิเศษ", price: 90, image: "pic/brooch.jpg",
+                colors: ["เงิน", "ทอง"], sizes: [],
+                description: "เข็มกลัดลิมิเต็ด รุ่นครบรอบ 30 ปี ทำจากโลหะชุบพรีเมียม",
+                features: ["ชุบสีทน", "มีบรรจุภัณฑ์พิเศษ", "จำนวนจำกัด"],
+                rating: 4.9, stock: 120
+            }
         ];
 
         const CART_KEY = "csmju_cart_v1";
         let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-        const $ = id => document.getElementById(id); const fmt = n => n.toLocaleString("th-TH");
+        const $ = id => document.getElementById(id);
+        const fmt = n => n.toLocaleString("th-TH");
         let modalProduct = null;
 
         function renderProducts() {
-            $("grid").innerHTML = "";
+            const grid = document.getElementById("grid");
+            grid.innerHTML = "";
             PRODUCTS.forEach(p => {
-                const card = document.createElement("article");
+                const card = document.createElement("div");
                 card.className = "prod";
                 card.innerHTML = `
-        <img src="${p.image}">
-        <div class="p-body">
-            <div class="p-title">${p.name}</div>
+            <img src="${p.image}" alt="${p.name}">
+            <h4>${p.name}</h4>
             <div class="price">${fmt(p.price)} บาท</div>
-            <button class="btn-outline" onclick="openModal(${p.id})">เลือกตัวเลือก</button>
-        </div>`;
-                $("grid").appendChild(card);
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <div class="variant-badge">คะแนน ${p.rating.toFixed(1)}</div>
+                <div class="variant-badge">${p.colors.join(", ")}</div>
+            </div>
+            <button onclick="openModal(${p.id})">เลือกตัวเลือก</button>
+            `;
+                grid.appendChild(card);
             });
         }
 
         function openModal(id) {
             modalProduct = PRODUCTS.find(p => p.id === id);
+            if (!modalProduct) return;
             $("mTitle").textContent = modalProduct.name;
             $("mPrice").textContent = `${fmt(modalProduct.price)} บาท`;
             $("mImg").src = modalProduct.image;
+            $("mDescription").textContent = modalProduct.description;
+            $("mRating").textContent = modalProduct.rating.toFixed(1);
+            $("stockCount").textContent = modalProduct.stock;
 
-            $("mColor").innerHTML = modalProduct.colors.map(c => `<option>${c}</option>`).join("");
-            if (modalProduct.sizes.length > 0) {
+            // สี
+            $("mColor").innerHTML = modalProduct.colors.map(c => `<option value="${c}">${c}</option>`).join("");
+
+            // ขนาด
+            if (modalProduct.sizes && modalProduct.sizes.length) {
                 $("sizeBlock").style.display = "block";
-                $("mSize").innerHTML = modalProduct.sizes.map(s => `<option>${s}</option>`).join("");
-            } else { $("sizeBlock").style.display = "none"; }
+                $("mSize").innerHTML = modalProduct.sizes.map(s => `<option value="${s}">${s}</option>`).join("");
+            } else {
+                $("sizeBlock").style.display = "none";
+            }
+
+            // ฟีเจอร์
+            $("mFeatures").innerHTML = modalProduct.features.map(f => `<li>${f}</li>`).join("");
+
+            // qty & summary
+            $("mQty").value = 1;
+            updateVariantSummary();
+
+            // events
+            $("mColor").onchange = updateVariantSummary;
+            if (modalProduct.sizes && modalProduct.sizes.length) $("mSize").onchange = updateVariantSummary;
+            $("mQty").oninput = updateVariantSummary;
+
             $("modal").classList.add("open");
         }
-        function closeModal() { $("modal").classList.remove("open"); }
+
+        function updateVariantSummary() {
+            const color = $("mColor")?.value || "";
+            const size = $("mSize")?.value || "";
+            const qty = parseInt($("mQty").value) || 1;
+            let summary = `${qty} x ${modalProduct.name}`;
+            if (color) summary += ` | สี: ${color}`;
+            if (size) summary += ` | ขนาด: ${size}`;
+            $("variantSummary").textContent = summary;
+        }
+
+        function incrementQty() {
+            const el = $("mQty");
+            el.value = Math.min(99, (parseInt(el.value) || 1) + 1);
+            updateVariantSummary();
+        }
+        function decrementQty() {
+            const el = $("mQty");
+            el.value = Math.max(1, (parseInt(el.value) || 1) - 1);
+            updateVariantSummary();
+        }
 
         function addFromModal() {
             const color = $("mColor").value;
-            const size = modalProduct.sizes.length > 0 ? $("mSize").value : "";
-            const qty = parseInt($("mQty").value);
+            const size = modalProduct.sizes && modalProduct.sizes.length ? $("mSize").value : "";
+            const qty = Math.max(1, parseInt($("mQty").value) || 1);
             const key = `${modalProduct.id}-${color}-${size}`;
             const found = cart.find(i => i.key === key);
-            if (found) { found.qty += qty; }
-            else {
-                cart.push({ key, id: modalProduct.id, name: modalProduct.name, price: modalProduct.price, color, size, qty, image: modalProduct.image });
+            if (found) {
+                found.qty += qty;
+            } else {
+                cart.push({
+                    key,
+                    id: modalProduct.id,
+                    name: modalProduct.name,
+                    price: modalProduct.price,
+                    color,
+                    size,
+                    qty,
+                    image: modalProduct.image
+                });
             }
             saveCart(); renderCart(); closeModal();
+            showToast(`${modalProduct.name} ถูกเพิ่มลงตะกร้า`);
         }
 
         function renderCart() {
             $("cartList").innerHTML = "";
             let total = 0, count = 0;
             cart.forEach(it => {
-                total += it.price * it.qty; count += it.qty;
+                total += it.price * it.qty;
+                count += it.qty;
                 const row = document.createElement("div");
                 row.className = "item";
                 row.innerHTML = `
-        <img src="${it.image}" class="thumb">
-        <div class="meta">
-            <b>${it.name}</b>
-            <div style="font-size:0.85rem;color:#666">${it.color || ""} ${it.size || ""}</div>
-            <div class="qty">
-            <button onclick="chgQty('${it.key}',-1)">-</button>
-            <span>${it.qty}</span>
-            <button onclick="chgQty('${it.key}',1)">+</button>
-            <button style="margin-left:6px" onclick="removeItem('${it.key}')">ลบ</button>
+            <img src="${it.image}" class="thumb" alt="${it.name}">
+            <div class="meta">
+                <b>${it.name}</b>
+                <div style="font-size:.85rem;color:#666">${it.color || ""} ${it.size || ""}</div>
+                <div class="qty">
+                <button onclick="chgQty('${it.key}',-1)">-</button>
+                <span>${it.qty}</span>
+                <button onclick="chgQty('${it.key}',1)">+</button>
+                <button style="margin-left:6px" onclick="removeItem('${it.key}')">ลบ</button>
+                </div>
             </div>
-        </div>
-        <b>${fmt(it.price * it.qty)}฿</b>`;
+          <b>${fmt(it.price * it.qty)}฿</b>
+        `;
                 $("cartList").appendChild(row);
             });
             $("cartTotal").textContent = fmt(total);
             $("cartCount").textContent = count;
+            $("cartCountDrawer").textContent = count;
         }
 
         function chgQty(key, delta) {
@@ -505,12 +1006,30 @@
             if (it.qty <= 0) cart = cart.filter(i => i.key !== key);
             saveCart(); renderCart();
         }
-        function removeItem(key) { cart = cart.filter(i => i.key !== key); saveCart(); renderCart(); }
+        function removeItem(key) {
+            cart = cart.filter(i => i.key !== key);
+            saveCart(); renderCart();
+        }
         function saveCart() { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
         function toggleCart() { $("drawer").classList.toggle("open"); }
+        function closeModal() { $("modal").classList.remove("open"); }
         function goCheckout() { window.location.href = "checkout.html"; }
 
-        renderProducts(); renderCart();
+        function showToast(text) {
+            const toast = document.createElement("div");
+            toast.className = "toast success";
+            toast.textContent = text;
+            document.body.appendChild(toast);
+            requestAnimationFrame(() => toast.style.opacity = "1");
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                setTimeout(() => toast.remove(), 400);
+            }, 1800);
+        }
+
+        // init
+        renderProducts();
+        renderCart();
     </script>
 </body>
 
